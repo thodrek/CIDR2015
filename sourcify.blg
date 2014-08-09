@@ -3,52 +3,53 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: sourcify.aux
 The style file: abbrv.bst
 Database file #1: sourcify.bib
-Illegal end of database file---line 1818 of file sourcify.bib
+I was expecting a `,' or a `}'---line 1823 of file sourcify.bib
  : 
- : 
+ : @inproceedings{sdm:2013,
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in trendspottr
 Warning--to sort, need author or key in datasift
-You've used 18 entries,
+Warning--to sort, need author or key in spotlight
+You've used 22 entries,
             2118 wiz_defined-function locations,
-            601 strings with 6905 characters,
-and the built_in function-call counts, 7345 in all, are:
-= -- 728
-> -- 380
-< -- 7
-+ -- 151
-- -- 132
-* -- 531
-:= -- 1159
-add.period$ -- 59
-call.type$ -- 18
-change.case$ -- 120
+            624 strings with 7391 characters,
+and the built_in function-call counts, 8694 in all, are:
+= -- 867
+> -- 420
+< -- 9
++ -- 167
+- -- 144
+* -- 604
+:= -- 1350
+add.period$ -- 70
+call.type$ -- 22
+change.case$ -- 137
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 275
-empty$ -- 561
-format.name$ -- 132
-if$ -- 1586
+cite$ -- 25
+duplicate$ -- 337
+empty$ -- 685
+format.name$ -- 144
+if$ -- 1897
 int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 16
-newline$ -- 91
-num.names$ -- 32
-pop$ -- 126
+int.to.str$ -- 22
+missing$ -- 20
+newline$ -- 110
+num.names$ -- 38
+pop$ -- 153
 preamble$ -- 1
-purify$ -- 102
+purify$ -- 116
 quote$ -- 0
-skip$ -- 214
+skip$ -- 271
 stack$ -- 0
-substring$ -- 434
-swap$ -- 86
-text.length$ -- 7
+substring$ -- 536
+swap$ -- 109
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 72
-warning$ -- 2
-while$ -- 62
-width$ -- 20
-write$ -- 203
+type$ -- 86
+warning$ -- 3
+while$ -- 75
+width$ -- 24
+write$ -- 243
 (There was 1 error message)
