@@ -139,16 +139,25 @@ So a major challenge for a source management system is to guide the user through
 
 \section{System Overview}
 \label{sec:overview}
-In this section we propose a preliminary design that aims to address the challenges specified in the previous section. An overview of the proposed system is show in \Cref{fig:system}. 
+In this section we propose a preliminary design that aims to address the challenges specified in the previous section. An overview of the proposed architecture for a data source management system is show in \Cref{fig:system}. The system is composed by (i) a data extractor module, responsible for collecting the raw data from different sources, (ii) a source analysis engine that is responsible of analyzing the content of sources, evaluating their quality with respect to the quality metrics introduced in the previous section and creating an index describing both the content and containing a quality profile for each source, and (iii) a query engine that given a user query (i.e., a description of the desired integration task), is responsible of identifying the data domain corresponding to the query, the relevant sources, find the most valuable sources based on source selection and present the results to the user while enabling interactive exploration. Next, we focus on the source analysis engine and the query engine and discuss how these two components address the challenges and requirements presented above. We omit the first module of extracting data from different sources as it does not entail any technical challenges.
+
 \begin{figure}
 	\begin{center}
-	\includegraphics[clip,scale=0.28]{fig/framework.pdf}
-	\caption{Framework overview.}
+	\includegraphics[clip,scale=0.5]{fig/system.eps}
+	\caption{Source Management System Architecture.}
 	\label{fig:system}
 	\end{center}
 \end{figure}
 
 
+\subsection{Source Analysis Module}
+A data source management system should be able to support sources covering completely heterogeneous data domains. For example, it should be able to analyze the content of a structured Web table providing financial data and the unstructured content of news articles extracted from a news paper. This is necessary to be able to support diverse integration tasks as described in \Cref{sec:diverse}. 
+
+We propose using a {\em knowledge graph}, i.e., a {\em knowledge base} organized as a graph (e.g., Google Knowledge Graph), as a global relaxed schema for describing arbitrary data domains. A knowledge base acts as an information repository that provides a means for information to be collected, organized, shared, searched, and utilized. A knowledge base can be viewed as a collection of {\em facts} that describe information about entities and their properties, and {\em concepts} that describe information about entity types and their properties. Both facts and concepts can be represented as nodes of the knowledge graph. Knowledge bases have already been used to analyze the content of diverse data sets, such as Web Tables~\cite{limaye:2010, dassarma:2012, fan:2014}. However, previous approaches. 
+
+Descirbe correspondance graph -> 
+
+\subsection{Query Engine}
 
 \ \\Present architecture framework. Core module {\em knowledge graph and correspondence graph}. Modules:
 \begin{enumerate}

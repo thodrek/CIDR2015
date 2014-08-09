@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=latex 2010.7.21)  9 AUG 2014 06:25
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=latex 2010.7.21)  9 AUG 2014 09:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -386,53 +386,36 @@ es
 [2]
 Underfull \vbox (badness 2698) has occurred while \output is active []
 
+ [3]
+File: fig/system.eps Graphic file (type eps)
+
+<fig/system.eps>
+Overfull \hbox (11.43936pt too wide) in paragraph at lines 146--147
+ [] 
+ []
 
 
-LaTeX Warning: File `fig/framework.pdf' not found on input line 145.
-
-
-./sourcify.tex:145: LaTeX Error: File `fig/framework.pdf' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.145 ...phics[clip,scale=0.28]{fig/framework.pdf}
-                                                  
-? 
-
-./sourcify.tex:145: LaTeX Error: Cannot determine size of graphic in fig/framew
-ork.pdf (no BoundingBox).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.145 ...phics[clip,scale=0.28]{fig/framework.pdf}
-                                                  
-? 
-File: fig/framework.pdf Graphic file (type eps)
-<fig/framework.pdf> [3]
-Overfull \hbox (3.55656pt too wide) in paragraph at lines 159--160
+Overfull \hbox (3.55656pt too wide) in paragraph at lines 168--169
 \T1/ptm/m/n/9 Spec-u-la-tive query an-swer-ing for neigh-bor-hood on pareto fro
 n-
  []
 
-(./sourcify.bbl
+(./sourcify.bbl [4]
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 5.
- (/usr/local/texlive/2010/texmf-dist/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-[4]) [5
 
-] (./sourcify.aux) ) 
+(/usr/local/texlive/2010/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)) [5
+
+]
+(./sourcify.aux) ) 
 Here is how much of TeX's memory you used:
  4240 strings out of 493748
- 67258 string characters out of 3143569
- 153673 words of memory out of 3000000
- 7434 multiletter control sequences out of 15000+200000
+ 67243 string characters out of 3143569
+ 154673 words of memory out of 3000000
+ 7433 multiletter control sequences out of 15000+200000
  40249 words of font info for 52 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 41i,11n,26p,1817b,315s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,11n,26p,1817b,310s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on sourcify.dvi (5 pages, 39344 bytes).
+Output written on sourcify.dvi (5 pages, 42232 bytes).
