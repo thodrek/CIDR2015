@@ -23,6 +23,11 @@ L.~Berti-Equille, A.~D. Sarma, X.~Dong, A.~Marian, and D.~Srivastava.
   and application of source dependence.
 \newblock In {\em CIDR}, 2009.
 
+\bibitem{blei:2003}
+D.~M. Blei, A.~Y. Ng, and M.~I. Jordan.
+\newblock Latent dirichlet allocation.
+\newblock {\em J. Mach. Learn. Res.}, 3:993--1022, Mar. 2003.
+
 \bibitem{bronzi:2013}
 M.~Bronzi, V.~Crescenzi, P.~Merialdo, and P.~Papotti.
 \newblock Extraction and integration of partially overlapping web sources.
@@ -120,5 +125,11 @@ S.~Schutte and K.~Donnay.
 \newblock Matched wake analysis: finding causal relationships in spatiotemporal
   event data.
 \newblock {\em Political Geography}, 41:1--10, 2014.
+
+\bibitem{wilson:2001}
+B.~Wilson, D.~Cappelleri, T.~W. Simpson, and M.~Frecker.
+\newblock {Efficient Pareto Frontier Exploration using Surrogate
+  Approximations}.
+\newblock {\em Optimization and Engineering}, 2(1):31--50, 2001.
 
 \end{thebibliography}
