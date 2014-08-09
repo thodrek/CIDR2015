@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=latex 2010.7.21)  3 AUG 2014 14:54
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=latex 2010.7.21)  9 AUG 2014 06:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -317,73 +317,122 @@ Package pdftexcmds Info: \pdf@ifprimitive is available.
 
 Package epstopdf Warning: Drivers other than `pdftex.def' are not supported.
 
-)) (./sourcify.aux)
+))
+\c@definition=\count118
+\c@example=\count119
+\c@theorem=\count120
+\c@problem=\count121
+\c@reduction=\count122
+ (./sourcify.aux)
 \openout1 = `sourcify.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 26.
 
 (/usr/local/texlive/2010/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 57.
+LaTeX Font Info:    Try loading font information for U+msa on input line 63.
 
 (/usr/local/texlive/2010/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 57.
+LaTeX Font Info:    Try loading font information for U+msb on input line 63.
 
 (/usr/local/texlive/2010/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 57.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 63.
 
 (/usr/local/texlive/2010/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for T1+phv on input line 61.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/psnfss/t1phv.fd
-File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
-)
-Overfull \hbox (3.86203pt too wide) in paragraph at lines 77--78
-\T1/ptm/m/n/9 hard for the user to iden-tify use-ful sources (have plots from G
-DELT).
- []
-
-[1
+ [1
 
 
 ]
-Overfull \hbox (3.55656pt too wide) in paragraph at lines 109--110
+Overfull \hbox (1.46709pt too wide) in paragraph at lines 96--97
+\T1/ptm/m/n/9 par-ties and are as-so-ci-ated with cer-tain lo-ca-tions, ac-tors
+ (cor-re-spond-
+ []
+
+
+Overfull \hbox (3.78943pt too wide) in paragraph at lines 96--97
+\T1/ptm/m/n/9 ing to or-ga-ni-za-tions), and a de-scrip-tion con-tain-ing the p
+o-lit-i-cal views
+ []
+
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 106.
+
+Overfull \hbox (2.9433pt too wide) in paragraph at lines 106--107
+\T1/ptm/m/n/9 task the sys-tem should au-to-mat-i-cally de-ter-mine which sourc
+es
+ []
+
+[2]
+Underfull \vbox (badness 2698) has occurred while \output is active []
+
+
+
+LaTeX Warning: File `fig/framework.pdf' not found on input line 145.
+
+
+./sourcify.tex:145: LaTeX Error: File `fig/framework.pdf' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.145 ...phics[clip,scale=0.28]{fig/framework.pdf}
+                                                  
+? 
+
+./sourcify.tex:145: LaTeX Error: Cannot determine size of graphic in fig/framew
+ork.pdf (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.145 ...phics[clip,scale=0.28]{fig/framework.pdf}
+                                                  
+? 
+File: fig/framework.pdf Graphic file (type eps)
+<fig/framework.pdf> [3]
+Overfull \hbox (3.55656pt too wide) in paragraph at lines 159--160
 \T1/ptm/m/n/9 Spec-u-la-tive query an-swer-ing for neigh-bor-hood on pareto fro
 n-
  []
 
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 124.
-No file sourcify.bbl.
-[2
+(./sourcify.bbl
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 5.
+ (/usr/local/texlive/2010/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+[4]) [5
 
 ] (./sourcify.aux) ) 
 Here is how much of TeX's memory you used:
- 4150 strings out of 493748
- 65727 string characters out of 3143569
- 151673 words of memory out of 3000000
- 7349 multiletter control sequences out of 15000+200000
- 41663 words of font info for 52 fonts, out of 3000000 for 9000
+ 4240 strings out of 493748
+ 67258 string characters out of 3143569
+ 153673 words of memory out of 3000000
+ 7434 multiletter control sequences out of 15000+200000
+ 40249 words of font info for 52 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 41i,11n,26p,1021b,260s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,11n,26p,1817b,315s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on sourcify.dvi (2 pages, 10452 bytes).
+Output written on sourcify.dvi (5 pages, 39344 bytes).

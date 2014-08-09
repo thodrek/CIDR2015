@@ -1,0 +1,93 @@
+\begin{thebibliography}{10}
+
+\bibitem{datasift}
+Datasift.
+\newblock \url{http://datasift.com}.
+
+\bibitem{trendspottr}
+Trendsporttr.
+\newblock \url{http://trendspottr.com}.
+
+\bibitem{berti-equille:sailing}
+L.~Berti-Equille, A.~D. Sarma, X.~Dong, A.~Marian, and D.~Srivastava.
+\newblock Sailing the information ocean with awareness of currents: Discovery
+  and application of source dependence.
+\newblock In {\em CIDR}, 2009.
+
+\bibitem{bronzi:2013}
+M.~Bronzi, V.~Crescenzi, P.~Merialdo, and P.~Papotti.
+\newblock Extraction and integration of partially overlapping web sources.
+\newblock {\em PVLDB}, 6(10):805--816, 2013.
+
+\bibitem{dassarma:2012}
+A.~Das~Sarma, L.~Fang, N.~Gupta, A.~Halevy, H.~Lee, F.~Wu, R.~Xin, and C.~Yu.
+\newblock Finding related tables.
+\newblock In {\em Proceedings of the 2012 ACM SIGMOD International Conference
+  on Management of Data}, SIGMOD '12, pages 817--828. ACM, 2012.
+
+\bibitem{dong:2009}
+X.~L. Dong, L.~Berti-Equille, and D.~Srivastava.
+\newblock Integrating conflicting data: The role of source dependence.
+\newblock {\em Proc. VLDB Endow.}, 2(1):550--561, Aug. 2009.
+
+\bibitem{Dong_vldb:2009}
+X.~L. Dong, A.~Halevy, and C.~Yu.
+\newblock Data integration with uncertainty.
+\newblock {\em The VLDB Journal}, 18(2):469--500, Apr. 2009.
+
+\bibitem{dong:vldb13}
+X.~L. Dong, B.~Saha, and D.~Srivastava.
+\newblock Less is more: selecting sources wisely for integration.
+\newblock In {\em Proceedings of the 39th international conference on Very
+  Large Data Bases}, PVLDB'13, pages 37--48. VLDB Endowment, 2013.
+
+\bibitem{halevy:2006}
+A.~Halevy, A.~Rajaraman, and J.~Ordille.
+\newblock Data integration: The teenage years.
+\newblock In {\em Proceedings of the 32Nd International Conference on Very
+  Large Data Bases}, VLDB '06, pages 9--16. VLDB Endowment, 2006.
+
+\bibitem{hua:2013}
+T.~Hua, C.-T. Lu, N.~Ramakrishnan, F.~Chen, J.~Arredondo, D.~Mares, and
+  K.~Summers.
+\newblock Analyzing civil unrest through social media.
+\newblock {\em Computer}, 46(12):80--84, 2013.
+
+\bibitem{jin:2013}
+F.~Jin, N.~Self, P.~Saraf, P.~Butler, W.~Wang, and N.~Ramakrishnan.
+\newblock Forex-foreteller: Currency trend modeling using news articles.
+\newblock In {\em Proceedings of the 19th ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining}, KDD '13, pages 1470--1473. ACM,
+  2013.
+
+\bibitem{leetaru:2013}
+K.~Leetaru and P.~Schrodt.
+\newblock Gdelt: Global data on events, language, and tone, 1979-2012.
+\newblock {\em Inter. Studies Association Annual Conf.}, 2013.
+
+\bibitem{li:2012}
+X.~Li, X.~L. Dong, K.~Lyons, W.~Meng, and D.~Srivastava.
+\newblock Truth finding on the deep web: is the problem solved?
+\newblock In {\em Proceedings of the 39th international conference on Very
+  Large Data Bases}, PVLDB'13, pages 97--108. VLDB Endowment, 2013.
+
+\bibitem{qi:2013}
+G.-J. Qi, C.~C. Aggarwal, J.~Han, and T.~Huang.
+\newblock Mining collective intelligence in diverse groups.
+\newblock In {\em Proceedings of the 22Nd International Conference on World
+  Wide Web}, WWW '13, pages 1041--1052. International World Wide Web
+  Conferences Steering Committee, 2013.
+
+\bibitem{rekatsinas:2014}
+T.~Rekatsinas, X.~L. Dong, and D.~Srivastava.
+\newblock Characterizing and selecting fresh data sources.
+\newblock In {\em Proceedings of the 2014 ACM SIGMOD International Conference
+  on Management of Data}, SIGMOD '14, pages 919--930. ACM, 2014.
+
+\bibitem{schutte:2014}
+S.~Schutte and K.~Donnay.
+\newblock Matched wake analysis: finding causal relationships in spatiotemporal
+  event data.
+\newblock {\em Political Geography}, 41:1--10, 2014.
+
+\end{thebibliography}
