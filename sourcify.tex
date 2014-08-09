@@ -151,11 +151,25 @@ In this section we propose a preliminary design that aims to address the challen
 
 
 \subsection{Source Analysis Module}
-A data source management system should be able to support sources covering completely heterogeneous data domains. For example, it should be able to analyze the content of a structured Web table providing financial data and the unstructured content of news articles extracted from a news paper. This is necessary to be able to support diverse integration tasks as described in \Cref{sec:diverse}. 
+A data source management system should be able to support sources covering completely heterogeneous data universes. For example, it should be able to analyze the content of a structured Web table providing financial data and the unstructured content of news articles extracted from a news paper. This is necessary for diverse integration tasks as described in \Cref{sec:diverse}. 
 
-We propose using a {\em knowledge graph}, i.e., a {\em knowledge base} organized as a graph (e.g., Google Knowledge Graph), as a global relaxed schema for describing arbitrary data domains. A knowledge base acts as an information repository that provides a means for information to be collected, organized, shared, searched, and utilized. A knowledge base can be viewed as a collection of {\em facts} that describe information about entities and their properties, and {\em concepts} that describe information about entity types and their properties. Both facts and concepts can be represented as nodes of the knowledge graph. Knowledge bases have already been used to analyze the content of diverse data sets, such as Web Tables~\cite{limaye:2010, dassarma:2012, fan:2014}. However, previous approaches. 
+We propose using a {\em knowledge graph}, i.e., a {\em knowledge base} organized as a graph (e.g., Google Knowledge Graph), as a global relaxed schema for describing arbitrary data universes. A knowledge base acts as an information repository that provides a means for information to be collected, organized, shared, searched, and utilized. A knowledge base can be viewed as a collection of {\em facts} that describe information about entities and their properties, and {\em concepts} that describe information about entity types and their properties. Both facts and concepts can be represented as nodes of the knowledge graph. Given a knowledge graph, a data universe (e.g., ``Sports in the USA") can be described as a collection of concepts and/or entities. To reason about the different data universes the available sources cover and the source quality we propose augmenting the knowledge graph with a {\em correspondence graph}.
 
-Descirbe correspondance graph -> 
+\begin{figure}
+	\begin{center}
+	\includegraphics[clip,scale=0.4]{fig/kgcg}
+	\caption{An example of a knowledge graph and a correspondence graph with a universe node corresponding to the population of countries in Asia.}
+	\label{fig:kgcg}
+	\end{center}
+\end{figure}
+
+Specifically, the correspondence graph contains data sources as nodes (referred to as {\em source nodes}), a set of nodes corresponding to clusters of concepts and/or entities as dictated by the available sources (referred to as {\em universe nodes}), and connects each source node with the universe node corresponding to the concepts and facts covered by that source. The universe nodes are also connected with the corresponding concepts and entities.  Each edge from a source to a universe node is annotated with a quality profile of that source for that specific data universe, and each universe node contains local information about the dependencies of the data sources that are connected to it. An example of a knowledge graph and a correspondence graph is shown in \Cref{fig:kgcg}. Next, we describe a preliminary approach for constructing the correspondence graph. In particular, we discuss how one can identify the universe nodes for a set of available data sources and how one can compute the quality profiles and data source dependencies. 
+
+
+The universe nodes in the correspondence graph are nothing more than a clustering of the content of the available data sources. However, we want each of these nodes to be associated with a collection of concepts and/or instances of the knowledge graph. The following approach can be used to construct these nodes. Given a set of sources we can consider that each source is a {\em collection of entries}, where each entry is a conjunction over concepts and/or instances. Thus, we must annotate the entries of content of each source with concept and instance labels from the knowledge graph. Several techniques have been used to obtain these annotations~\cite{limaye:2010, }  Moreover, the universe nodes in the correspondence graph are nothing more than a clustering of the entries present in the available sources. In fact, they are a cluster annotated with To identify the different universe nodes in the correspondence 
+
+\ \\Use the universe nodes to identify the quality of each source and potential dependencies . 
+
 
 \subsection{Query Engine}
 
@@ -186,9 +200,12 @@ Descirbe correspondance graph ->
 \label{sec:related}
 Integrating data from multiple sources is essential in a growing number of application domains, including large scale enterprises that own many data sources~\cite{halevy:2006}, collective intelligence, which aggregates the shared information from a diverse set of sources~\cite{hua:2013,qi:2013}, and targeted data analytics where data of Web and social media are heavily used~\cite{jin:2013}. Analyzing multiple data sources collectively can significantly enhance the value of data. For example, with more sources, the completeness of the integrated data can be increased; in the presence of inconsistencies, the correctness of the integrated data can be improved by leveraging the collective wisdom. Such quality improvements allow for more advanced data analysis and can bring a big {\em gain}. Focus on integrating all sources and focus on accuracy alone.
 
+Knowledge bases have already been used to annotate the content of diverse data sources, such as Web Tables~\cite{limaye:2010, dassarma:2012, fan:2014}, to enable search over them. While these annotations provide information about the scope of each source they are not enough for a data source management system as they do not provide any information about the quality of the different sources.
+
 
 \section{Conclusions}
 \label{sec:conclusion}
+We presented our vision for a data source management system that will 
 
 \bibliographystyle{abbrv}
 \bibliography{sourcify}

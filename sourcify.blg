@@ -3,47 +3,52 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: sourcify.aux
 The style file: abbrv.bst
 Database file #1: sourcify.bib
+Illegal end of database file---line 1818 of file sourcify.bib
+ : 
+ : 
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in trendspottr
 Warning--to sort, need author or key in datasift
-You've used 16 entries,
+You've used 18 entries,
             2118 wiz_defined-function locations,
-            592 strings with 6604 characters,
-and the built_in function-call counts, 6606 in all, are:
-= -- 663
-> -- 334
+            601 strings with 6905 characters,
+and the built_in function-call counts, 7345 in all, are:
+= -- 728
+> -- 380
 < -- 7
-+ -- 132
-- -- 116
-* -- 473
-:= -- 1034
-add.period$ -- 53
-call.type$ -- 16
-change.case$ -- 106
++ -- 151
+- -- 132
+* -- 531
+:= -- 1159
+add.period$ -- 59
+call.type$ -- 18
+change.case$ -- 120
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 250
-empty$ -- 504
-format.name$ -- 116
-if$ -- 1435
+cite$ -- 20
+duplicate$ -- 275
+empty$ -- 561
+format.name$ -- 132
+if$ -- 1586
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 14
-newline$ -- 81
-num.names$ -- 28
-pop$ -- 110
+int.to.str$ -- 18
+missing$ -- 16
+newline$ -- 91
+num.names$ -- 32
+pop$ -- 126
 preamble$ -- 1
-purify$ -- 90
+purify$ -- 102
 quote$ -- 0
-skip$ -- 200
+skip$ -- 214
 stack$ -- 0
-substring$ -- 396
-swap$ -- 83
+substring$ -- 434
+swap$ -- 86
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 64
+type$ -- 72
 warning$ -- 2
-while$ -- 57
-width$ -- 18
-write$ -- 182
-(There were 2 warnings)
+while$ -- 62
+width$ -- 20
+write$ -- 203
+(There was 1 error message)

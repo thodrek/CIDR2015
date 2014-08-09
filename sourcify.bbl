@@ -41,6 +41,11 @@ X.~L. Dong, B.~Saha, and D.~Srivastava.
 \newblock In {\em Proceedings of the 39th international conference on Very
   Large Data Bases}, PVLDB'13, pages 37--48. VLDB Endowment, 2013.
 
+\bibitem{fan:2014}
+J.~Fan, M.~Lu, B.~C. Ooi, W.-C. Tan, and M.~Zhang.
+\newblock A hybrid machine-crowdsourcing system for matching web tables.
+\newblock In {\em ICDE}, 2014.
+
 \bibitem{halevy:2006}
 A.~Halevy, A.~Rajaraman, and J.~Ordille.
 \newblock Data integration: The teenage years.
@@ -70,6 +75,12 @@ X.~Li, X.~L. Dong, K.~Lyons, W.~Meng, and D.~Srivastava.
 \newblock Truth finding on the deep web: is the problem solved?
 \newblock In {\em Proceedings of the 39th international conference on Very
   Large Data Bases}, PVLDB'13, pages 97--108. VLDB Endowment, 2013.
+
+\bibitem{limaye:2010}
+G.~Limaye, S.~Sarawagi, and S.~Chakrabarti.
+\newblock Annotating and searching web tables using entities, types and
+  relationships.
+\newblock {\em PVLDB}, 3(1):1338--1347, 2010.
 
 \bibitem{qi:2013}
 G.-J. Qi, C.~C. Aggarwal, J.~Han, and T.~Huang.
