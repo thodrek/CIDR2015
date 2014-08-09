@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2010.7.21)  9 AUG 2014 15:23
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2010.7.21)  9 AUG 2014 15:34
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -456,10 +456,10 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )) [6]
 (./sourcify.aux) ) 
 Here is how much of TeX's memory you used:
- 4589 strings out of 493747
- 71746 string characters out of 3143546
- 159801 words of memory out of 3000000
- 7751 multiletter control sequences out of 15000+200000
+ 4590 strings out of 493747
+ 71765 string characters out of 3143546
+ 160801 words of memory out of 3000000
+ 7752 multiletter control sequences out of 15000+200000
  50595 words of font info for 62 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  41i,11n,26p,1817b,266s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -474,7 +474,7 @@ live/2010/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/20
 f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2010/texmf-dist/fon
 ts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/u
 rw/times/utmri8a.pfb>
-Output written on sourcify.pdf (6 pages, 396585 bytes).
+Output written on sourcify.pdf (6 pages, 396379 bytes).
 PDF statistics:
  139 PDF objects out of 1000 (max. 8388607)
  94 compressed objects within 1 object stream

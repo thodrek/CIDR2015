@@ -14,7 +14,7 @@ Trendsporttr.
 
 \bibitem{sdm:2013}
 R.~Balasubramanyan and W.~W. Cohen.
-\newblock {Regularization of Latent Variable Models to Obtain Sparsity.}
+\newblock Regularization of latent variable models to obtain sparsity.
 \newblock In {\em SDM}, pages 414--422, 2013.
 
 \bibitem{berti-equille:sailing}
@@ -32,6 +32,11 @@ D.~M. Blei, A.~Y. Ng, and M.~I. Jordan.
 M.~Bronzi, V.~Crescenzi, P.~Merialdo, and P.~Papotti.
 \newblock Extraction and integration of partially overlapping web sources.
 \newblock {\em PVLDB}, 6(10):805--816, 2013.
+
+\bibitem{cafarella:2009}
+M.~J. Cafarella, A.~Halevy, and N.~Khoussainova.
+\newblock Data integration for the relational web.
+\newblock {\em PVLDB}, 2, 2009.
 
 \bibitem{dassarma:2012}
 A.~Das~Sarma, L.~Fang, N.~Gupta, A.~Halevy, H.~Lee, F.~Wu, R.~Xin, and C.~Yu.
@@ -71,24 +76,16 @@ L.~Getoor and B.~Taskar.
 \newblock {\em {Probabilistic Relational Models}}.
 \newblock The MIT Press, 2007.
 
-\bibitem{halevy:2006}
-A.~Halevy, A.~Rajaraman, and J.~Ordille.
-\newblock Data integration: The teenage years.
-\newblock In {\em Proceedings of the 32Nd International Conference on Very
-  Large Data Bases}, VLDB '06, pages 9--16. VLDB Endowment, 2006.
+\bibitem{oktie:13}
+O.~Hassanzadeh, K.~Q. Pu, S.~H. Yeganeh, R.~J. Miller, L.~Popa, M.~A.
+  Hern{\'a}ndez, and H.~Ho.
+\newblock Discovering linkage points over web data.
+\newblock {\em PVLDB}, 6, 2013.
 
-\bibitem{hua:2013}
-T.~Hua, C.-T. Lu, N.~Ramakrishnan, F.~Chen, J.~Arredondo, D.~Mares, and
-  K.~Summers.
-\newblock Analyzing civil unrest through social media.
-\newblock {\em Computer}, 46(12):80--84, 2013.
-
-\bibitem{jin:2013}
-F.~Jin, N.~Self, P.~Saraf, P.~Butler, W.~Wang, and N.~Ramakrishnan.
-\newblock Forex-foreteller: Currency trend modeling using news articles.
-\newblock In {\em Proceedings of the 19th ACM SIGKDD International Conference
-  on Knowledge Discovery and Data Mining}, KDD '13, pages 1470--1473. ACM,
-  2013.
+\bibitem{oktie:11}
+O.~Hassanzadeh, S.~H. Yeganeh, and R.~J. Miller.
+\newblock Linking semistructured data on the web.
+\newblock In {\em WebDB}, 2011.
 
 \bibitem{leetaru:2013}
 K.~Leetaru and P.~Schrodt.
@@ -107,13 +104,6 @@ G.~Limaye, S.~Sarawagi, and S.~Chakrabarti.
   relationships.
 \newblock {\em PVLDB}, 3(1):1338--1347, 2010.
 
-\bibitem{qi:2013}
-G.-J. Qi, C.~C. Aggarwal, J.~Han, and T.~Huang.
-\newblock Mining collective intelligence in diverse groups.
-\newblock In {\em Proceedings of the 22Nd International Conference on World
-  Wide Web}, WWW '13, pages 1041--1052. International World Wide Web
-  Conferences Steering Committee, 2013.
-
 \bibitem{rekatsinas:2014}
 T.~Rekatsinas, X.~L. Dong, and D.~Srivastava.
 \newblock Characterizing and selecting fresh data sources.
@@ -126,10 +116,22 @@ S.~Schutte and K.~Donnay.
   event data.
 \newblock {\em Political Geography}, 41:1--10, 2014.
 
+\bibitem{venetis:11}
+P.~Venetis, A.~Y. Halevy, J.~Madhavan, M.~Pasca, W.~Shen, F.~Wu, G.~Miao, and
+  C.~Wu.
+\newblock Recovering semantics of tables on the web.
+\newblock {\em PVLDB}, 4, 2011.
+
 \bibitem{wilson:2001}
 B.~Wilson, D.~Cappelleri, T.~W. Simpson, and M.~Frecker.
 \newblock {Efficient Pareto Frontier Exploration using Surrogate
   Approximations}.
 \newblock {\em Optimization and Engineering}, 2(1):31--50, 2001.
+
+\bibitem{yakout:2012}
+M.~Yakout, K.~Ganjam, K.~Chakrabarti, and S.~Chaudhuri.
+\newblock Infogather: entity augmentation and attribute discovery by holistic
+  matching with web tables.
+\newblock In {\em SIGMOD}, 2012.
 
 \end{thebibliography}
