@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=latex 2010.7.21)  9 AUG 2014 14:53
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2010.7.21)  9 AUG 2014 15:23
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **sourcify.tex
@@ -36,10 +36,11 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/usr/local/texlive/2010/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: dvips.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/dvips.def
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/02/14 v0.04n Graphics/color for pdfTeX
+\Gread@gobject=\count79
 ))
 \Gin@req@height=\dimen102
 \Gin@req@width=\dimen103
@@ -78,13 +79,13 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count79
+\inf@bad=\count80
 LaTeX Info: Redefining \frac on input line 211.
-\uproot@=\count80
-\leftroot@=\count81
+\uproot@=\count81
+\leftroot@=\count82
 LaTeX Info: Redefining \overline on input line 307.
-\classnum@=\count82
-\DOTSCASE@=\count83
+\classnum@=\count83
+\DOTSCASE@=\count84
 LaTeX Info: Redefining \ldots on input line 379.
 LaTeX Info: Redefining \dots on input line 382.
 LaTeX Info: Redefining \cdots on input line 467.
@@ -93,15 +94,15 @@ LaTeX Info: Redefining \cdots on input line 467.
 \big@size=\dimen108
 LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
-\macc@depth=\count84
-\c@MaxMatrixCols=\count85
+\macc@depth=\count85
+\c@MaxMatrixCols=\count86
 \dotsspace@=\muskip10
-\c@parentequation=\count86
-\dspbrk@lvl=\count87
+\c@parentequation=\count87
+\dspbrk@lvl=\count88
 \tag@help=\toks17
-\row@=\count88
-\column@=\count89
-\maxfields@=\count90
+\row@=\count89
+\column@=\count90
+\maxfields@=\count91
 \andhelp@=\toks18
 \eqnshift@=\dimen109
 \alignsep@=\dimen110
@@ -128,22 +129,22 @@ Questions on the style, SIGS policies, etc. to Adrienne Griscti griscti@acm.org
 \footheight=\dimen115
 \@maxsep=\dimen116
 \@dblmaxsep=\dimen117
-\aucount=\count91
-\originalaucount=\count92
+\aucount=\count92
+\originalaucount=\count93
 \auwidth=\dimen118
 \auskip=\dimen119
-\auskipcount=\count93
+\auskipcount=\count94
 \auskip=\dimen120
 \allauboxes=\dimen121
 \addauthors=\toks21
-\addauflag=\count94
+\addauflag=\count95
 \subtitletext=\toks22
-\savesection=\count95
-\sectioncntr=\count96
-\c@figure=\count97
-\c@table=\count98
+\savesection=\count96
+\sectioncntr=\count97
+\c@figure=\count98
+\c@table=\count99
 \titleboxnotes=\toks23
-\titleboxnoteflag=\count99
+\titleboxnoteflag=\count100
 Document Class: sig-alternate 2012/05/23 - V2.5 - based on acmproc.cls V1.3 <No
 v. 30 '99>
 (/usr/local/texlive/2010/texmf-dist/tex/latex/base/latexsym.sty
@@ -153,26 +154,26 @@ LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
 )
 \@acmtitlebox=\box28
-\titlenotecount=\count100
+\titlenotecount=\count101
 \tntoks=\toks24
 \tntokstwo=\toks25
 \tntoksthree=\toks26
 \tntoksfour=\toks27
 \tntoksfive=\toks28
-\catcount=\count101
+\catcount=\count102
 \copyrightnotice=\toks29
 \conf=\toks30
 \confinfo=\toks31
-\c@part=\count102
-\c@section=\count103
-\c@subsection=\count104
-\c@subsubsection=\count105
-\c@paragraph=\count106
+\c@part=\count103
+\c@section=\count104
+\c@subsection=\count105
+\c@subsubsection=\count106
+\c@paragraph=\count107
 
 Using 'Abbrev' bibliography style
 LaTeX Info: Redefining \cite on input line 1211.
 \bibindent=\dimen122
-\colcntr=\count107
+\colcntr=\count108
 \saveb@x=\box29
 \copyrtyr=\toks32
 \acmcopyr=\toks33
@@ -204,7 +205,7 @@ nment
 
 (/usr/local/texlive/2010/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count108
+\c@float@type=\count109
 \float@exts=\toks36
 \float@box=\box30
 \@float@everytoks=\toks37
@@ -214,7 +215,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks38
-\c@algorithm=\count109
+\c@algorithm=\count110
 )
 (/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
@@ -222,11 +223,8 @@ Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 (/usr/local/texlive/2010/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: dvips.def on input line 130.
-
-(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/dvipsnam.def
-File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
-))
+Package color Info: Driver file: pdftex.def on input line 130.
+)
 (/usr/local/texlive/2010/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
@@ -239,10 +237,10 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfigbottomskip=\skip46
 \subfigcapmargin=\dimen124
 \subfiglabelskip=\skip47
-\c@subfigure=\count110
-\c@lofdepth=\count111
-\c@subtable=\count112
-\c@lotdepth=\count113
+\c@subfigure=\count111
+\c@lofdepth=\count112
+\c@subtable=\count113
+\c@lotdepth=\count114
 
 ****************************************
 * Local config file subfigure.cfg used *
@@ -256,10 +254,10 @@ Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
 )
 (/usr/local/texlive/2010/texmf-dist/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count114
-\c@ALC@line=\count115
-\c@ALC@rem=\count116
-\c@ALC@depth=\count117
+\c@ALC@unique=\count115
+\c@ALC@line=\count116
+\c@ALC@rem=\count117
+\c@ALC@depth=\count118
 \ALC@tlm=\skip50
 \algorithmicindent=\skip51
 )
@@ -314,16 +312,22 @@ Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 )
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 436.
 
-Package epstopdf Warning: Drivers other than `pdftex.def' are not supported.
+(/usr/local/texlive/2010/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+)))
+\c@definition=\count119
+\c@example=\count120
+\c@theorem=\count121
+\c@problem=\count122
+\c@reduction=\count123
 
-))
-\c@definition=\count118
-\c@example=\count119
-\c@theorem=\count120
-\c@problem=\count121
-\c@reduction=\count122
- (./sourcify.aux)
+(./sourcify.aux)
 \openout1 = `sourcify.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
@@ -339,13 +343,23 @@ LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Try loading font information for T1+ptm on input line 26.
-
-(/usr/local/texlive/2010/texmf-dist/tex/latex/psnfss/t1ptm.fd
+ (/usr/local/texlive/2010/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+) (/usr/local/texlive/2010/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count124
+\scratchdimen=\dimen127
+\scratchbox=\box32
+\nofMPsegments=\count125
+\nofMParguments=\count126
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count127
+\MPscratchDim=\dimen128
+\MPnumerator=\count128
+\everyMPtoPDFconversion=\toks41
 )
 LaTeX Font Info:    Try loading font information for U+msa on input line 63.
-
-(/usr/local/texlive/2010/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2010/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 63.
@@ -360,7 +374,7 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [1
+ [1{/usr/local/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
@@ -387,33 +401,83 @@ es
 Underfull \vbox (badness 2698) has occurred while \output is active []
 
  [3]
-File: fig/system.eps Graphic file (type eps)
+Package epstopdf Info: Source file: <fig/system.eps>
+(epstopdf)                    date: 2014-08-09 08:36:48
+(epstopdf)                    size: 811375 bytes
+(epstopdf)             Output file: <fig/system-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-08-09 15:21:45
+(epstopdf)                    size: 145219 bytes
+(epstopdf)             Command: <epstopdf --outfile=fig/system-eps-converted-to
+.pdf fig/system.eps>
+(epstopdf)             \includegraphics on input line 146.
+Package epstopdf Info: Output file is already uptodate.
 
-<fig/system.eps>
-Overfull \hbox (11.43936pt too wide) in paragraph at lines 146--147
+<fig/system-eps-converted-to.pdf, id=21, 502.87875pt x 288.07625pt>
+File: fig/system-eps-converted-to.pdf Graphic file (type pdf)
+
+<use fig/system-eps-converted-to.pdf>
+Overfull \hbox (11.43875pt too wide) in paragraph at lines 146--147
  [] 
  []
 
-File: fig/kgcg.eps Graphic file (type eps)
-<fig/kgcg.eps> [4]
+Package epstopdf Info: Source file: <fig/kgcg.eps>
+(epstopdf)                    date: 2014-08-09 11:31:22
+(epstopdf)                    size: 600017 bytes
+(epstopdf)             Output file: <fig/kgcg-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-08-09 15:21:46
+(epstopdf)                    size: 89385 bytes
+(epstopdf)             Command: <epstopdf --outfile=fig/kgcg-eps-converted-to.p
+df fig/kgcg.eps>
+(epstopdf)             \includegraphics on input line 160.
+Package epstopdf Info: Output file is already uptodate.
+<fig/kgcg-eps-converted-to.pdf, id=23, 560.0925pt x 549.05125pt>
+File: fig/kgcg-eps-converted-to.pdf Graphic file (type pdf)
+
+<use fig/kgcg-eps-converted-to.pdf>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4 <./fig/system-eps-converted-to.pdf> <./fig/kgcg-eps-converted-to.pdf>]
 Underfull \vbox (badness 1558) has occurred while \output is active []
 
 
-(./sourcify.bbl
+<fig/sources.pdf, id=67, 366.36874pt x 251.94125pt>
+File: fig/sources.pdf Graphic file (type pdf)
+ <use fig/sources.pdf>
+Overfull \hbox (1.28802pt too wide) in paragraph at lines 192--193
+[]\T1/ptm/m/n/9 We ar-gue that first the query en-gine sys-tem should re-turn a
+ ranked
+ []
+
+[5 <./fig/sources.pdf>] (./sourcify.bbl
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 5.
- (/usr/local/texlive/2010/texmf-dist/tex/latex/psnfss/t1pcr.fd
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-[5]) [6
-
-] (./sourcify.aux) ) 
+)) [6]
+(./sourcify.aux) ) 
 Here is how much of TeX's memory you used:
- 4252 strings out of 493748
- 67382 string characters out of 3143569
- 155673 words of memory out of 3000000
- 7444 multiletter control sequences out of 15000+200000
- 40249 words of font info for 52 fonts, out of 3000000 for 9000
+ 4589 strings out of 493747
+ 71746 string characters out of 3143546
+ 159801 words of memory out of 3000000
+ 7751 multiletter control sequences out of 15000+200000
+ 50595 words of font info for 62 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 41i,11n,26p,1817b,313s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,11n,26p,1817b,266s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2010/texmf-dist/fonts/enc/dvips/base/8r.e
+nc}</usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb
+></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></
+usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr
+/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/l
+ocal/texlive/2010/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/tex
+live/2010/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/20
+10/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2010/texm
+f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2010/texmf-dist/fon
+ts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/u
+rw/times/utmri8a.pfb>
+Output written on sourcify.pdf (6 pages, 396585 bytes).
+PDF statistics:
+ 139 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 34 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-Output written on sourcify.dvi (6 pages, 52196 bytes).
