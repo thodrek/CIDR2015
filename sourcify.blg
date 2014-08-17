@@ -1,6 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2010)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: sourcify.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: C:\Users\Thod\Documents\GitHub\CIDR2015\sourcify.aux
 The style file: abbrv.bst
 Database file #1: sourcify.bib
 I was expecting a `,' or a `}'---line 1823 of file sourcify.bib
@@ -11,45 +9,4 @@ I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in trendspottr
 Warning--to sort, need author or key in datasift
 Warning--to sort, need author or key in spotlight
-You've used 25 entries,
-            2118 wiz_defined-function locations,
-            627 strings with 7568 characters,
-and the built_in function-call counts, 9089 in all, are:
-= -- 876
-> -- 489
-< -- 6
-+ -- 194
-- -- 168
-* -- 644
-:= -- 1475
-add.period$ -- 76
-call.type$ -- 25
-change.case$ -- 158
-chr.to.int$ -- 0
-cite$ -- 28
-duplicate$ -- 337
-empty$ -- 695
-format.name$ -- 168
-if$ -- 1923
-int.to.chr$ -- 0
-int.to.str$ -- 25
-missing$ -- 23
-newline$ -- 125
-num.names$ -- 44
-pop$ -- 174
-preamble$ -- 1
-purify$ -- 134
-quote$ -- 0
-skip$ -- 256
-stack$ -- 0
-substring$ -- 484
-swap$ -- 84
-text.length$ -- 6
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 98
-warning$ -- 3
-while$ -- 75
-width$ -- 27
-write$ -- 268
 (There was 1 error message)
