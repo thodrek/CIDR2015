@@ -1,4 +1,6 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: C:\Users\Thod\Documents\GitHub\CIDR2015\sourcify.aux
+This is BibTeX, Version 0.99d (TeX Live 2010)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: sourcify.aux
 The style file: abbrv.bst
 Database file #1: sourcify.bib
 I was expecting a `,' or a `}'---line 1823 of file sourcify.bib
@@ -6,7 +8,46 @@ I was expecting a `,' or a `}'---line 1823 of file sourcify.bib
  : @inproceedings{sdm:2013,
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--to sort, need author or key in trendspottr
-Warning--to sort, need author or key in datasift
 Warning--to sort, need author or key in spotlight
+You've used 29 entries,
+            2118 wiz_defined-function locations,
+            649 strings with 8281 characters,
+and the built_in function-call counts, 11060 in all, are:
+= -- 1075
+> -- 589
+< -- 8
++ -- 232
+- -- 202
+* -- 795
+:= -- 1797
+add.period$ -- 90
+call.type$ -- 29
+change.case$ -- 186
+chr.to.int$ -- 0
+cite$ -- 30
+duplicate$ -- 411
+empty$ -- 836
+format.name$ -- 202
+if$ -- 2336
+int.to.chr$ -- 0
+int.to.str$ -- 29
+missing$ -- 29
+newline$ -- 147
+num.names$ -- 56
+pop$ -- 197
+preamble$ -- 1
+purify$ -- 159
+quote$ -- 0
+skip$ -- 310
+stack$ -- 0
+substring$ -- 634
+swap$ -- 108
+text.length$ -- 8
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 112
+warning$ -- 1
+while$ -- 99
+width$ -- 31
+write$ -- 321
 (There was 1 error message)

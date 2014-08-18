@@ -76,111 +76,91 @@ Data is becoming a commodity of tremendous value for many domains, leading to a 
 %\keywords{ACM proceedings, \LaTeX, text tagging} % NOT required for Proceedings
 
 \section{Introduction}
-In the last few years, the number of data sources available for integration and analysis has risen because of the ease of publishing data on the Web (e.g., search engines and online stores collect user-specific data), the proliferation of services that facilitate the collection and sharing of data (e.g., Google Fusion Tables), and  the adoption of open data access policies both in science and government.This deluge of data has enabled small and medium enterprises as well as data scientists, analysts (e.g., political or business analysts) to acquire and analyze data from multiple data sources. However, a lot a valuable data is not free or open-access. For example, advertisers need to pay money for user-specific data,such as purchase history. 
+In the last few years, the number of data sources available for integration and analysis has risen because of the ease of publishing data on the Web (e.g., search engines and online stores collect user-specific data), the proliferation of services that facilitate the collection and sharing of data (e.g., Google Fusion Tables), and  the adoption of open data access policies both in science and government.This deluge of data has enabled small and medium enterprises as well as data scientists, analysts (e.g., political or business analysts) to acquire and analyze data from multiple data sources. However, a lot a valuable data is not free or open-access. 
 
-Given the sheer number of available data sources and the fact that acquiring data may involve a monetary cost, it is challenging for a user to identify sources that are truly beneficial to her application. In fact, sources may provide erroneous or stale data~\cite{Dong_vldb:2009, li:2012}, they may provide duplicate data at different prices, and may exhibit significant heterogeneity in the representation of stored data, both at the schema and instance level~\cite{bronzi:2013, li:2012, dassarma:2012}. The above give rise to the natural question of how can one discover {\em profitable sources}, i.e., sources that if integrated together the benefit for the user's application will be maximized while the corresponding cost will be minimized. Recent work~\cite{dong:vldb13,rekatsinas:2014} showed how, given a fixed data domain, the benefit of integration can be specified using rigorous data quality metrics, such as {\em coverage}, {\em accuracy} and {\em freshness}, and introduced the paradigm of {\em source selection} to reason about the benefits and costs of acquiring and integrating data from static and dynamic sources. Yet the proposed techniques are far from sufficient to support the discovery of profitable sources for general users, such as political or business analysts. Next, we use two real-world examples to illustrate the limitations of the current approaches. 
+Given the sheer number of available data sources and the fact that acquiring data may involve a monetary cost, it is challenging for a user to identify sources that are truly beneficial to her application. In fact, sources may provide erroneous or stale data~\cite{Dong_vldb:2009, li:2012}, they may provide duplicate data at different prices, and may exhibit significant heterogeneity in the representation of stored data, both at the schema and instance level~\cite{bronzi:2013, li:2012, dassarma:2012}. The above give rise to the natural question of how can one discover {\em profitable sources}, i.e., sources that if integrated together the benefit for the user's application will be maximized while the corresponding cost will be minimized. Recent work~\cite{dong:vldb13,rekatsinas:2014} showed how, given a fixed data domain, the benefit of integration can be specified using rigorous data quality metrics, such as {\em coverage}, {\em accuracy} and {\em freshness}, and introduced the paradigm of {\em source selection} to reason about the benefits and costs of acquiring and integrating data from static and dynamic sources. This line of work showed how one can identify the set of sources that can maximize the marginal gain for a predefined benefit function using a fixed quality metric or a fixed weighting across different quality metrics. Yet the proposed techniques are not sufficient for general users. 
 
-First, the data quality metrics used to quantify the benefit of integration are complex and it is not easy, especially for general users, to understand the trade-offs between these metrics. 
+First, the data quality metrics used to quantify the benefit of integration are complex and it is not easy, especially for general users, to understand the trade-offs between these metrics. Having a fixed and predefined weighting mechanism among different quality metrics does not allow the user to understand what are implications of the quality trade-offs for source selection and identify the set of sources that truly fits her requirements. We illustrate this using the following example inspired by recent work by Schutte et al.~\cite{schutte:2014}.
+\vspace{-5pt}
 \begin{example}
-We consider a political scientist that wants to find data providing supporting evidence for a new theory on causal relationships between interactions among different actors, including individuals, international organizations or countries at a specific location. Such interactions are usually reported in news papers, thus, our system should allow the political scientist to discover the right news papers and news articles that will provide her with sufficient data either supporting or confronting her theory. Sufficient here 
+Assume a political scientist who wants to find data providing supporting evidence for a new theory on causal relationships between interactions among different actors, including individuals, international organizations or countries at a specific location. Such interactions are usually reported in news papers, thus, our system should allow the political scientist to discover the news papers whose news articles will provide her with sufficient data either supporting or confronting her theory. The completeness, i.e., coverage, and accuracy of data are important here but the freshness of data is not crucial as delayed mentions of actor interactions will not affect the evidence provided by the data. While this distinction between coverage and freshness is clear, i.e., the scientist may require that freshness is completely ignored, the right trade-off between accuracy and coverage is not well known in advance. In fact demanding only highly accurate data may limit the coverage of events significantly, thus, the user should have the flexibility to explore and understand the trade-off between accuracy and coverage. 
 \end{example}
-Finally, the previous techniques focused on fixed domain and did not support source selection for arbitrary applications in a multi-user environment with users focusing on diverse tasks.  
+Second, the existing source selection techniques do not allow the user to evaluate the result returned by the system. The current techniques focus on finding a single set of sources that maximizes the marginal gain between the benefit and cost of integration given a budget constraint by the user, and report the overall quality and cost characteristics to the user. This does not allow the user to understand what is the individual quality and cost contribution of each selected source to the final set. Providing this information and enabling the user to interactively explore how the source selection solution will be affected by adding or removing sources is necessary for the user to evaluate the solutions returned by the source management system. Finally, the previous techniques focused on fixed domains and did not support source selection for arbitrary applications in multi-user environment with diverse tasks.  
 
-The first limitation of the proposed techniques 
+In this paper we introduce our vision for a {\em source management system} that will enable users to specify heterogeneous integration tasks as free-text queries and allow them to interactively discover the most important sources for their specified task. Given an extensive collection of rigorous data quality metrics, we envision a system that automatically discovers the quality of different data sources and provides source selection capabilities to enable discovery and exploration of data sources. A key characteristic of the proposed system is to help users understand which quality metrics are important for their integration task and enable them to discover sources whose integration result will maximize the desired metrics under any specified budget constraints. 
 
-\ \\Describe need for multi-objective optimization (how to facilitate user understand trade-off). Give one example where political scientist needs to evaluate a new theory coverage, accuracy, bias important but timeliness or freshness are not necessary. 
+The remainder of the paper is organized as follows. In \Cref{sec:overview} we provide an overview of the architecture of a data source management system and the key functionalities it should support and discuss the main challenges in building such a system, including, defining and computing multiple quality metrics that characterize the content of sources, supporting diverse integration tasks expressed as free-text queries,  and enabling the interactive exploration of data sources. Then, \Cref{sec:corgraph} presents a description of our proposed data source management system, introduces the different modules of the system and proposed  techniques for addressing the aforementioned challenges. Finally, \Cref{sec:related} discusses related work and \Cref{sec:conclusion} concludes the paper. 
 
-\ \\Describe need for exploration evaluate of quality. It is needed to understand the quality of data. Quality can come only via showing effect on collective quality. Aggregator of business listings  
-
-\section{Introduction}
-In the last few years, the number of data sources available for integration and analysis has risen because of the ease of publishing data on the Web, the proliferation of services that facilitate the collection and sharing of data (e.g., Google Fusion Tables), and  the adoption of open data access policies both in science and government. This deluge of data has enabled small and medium enterprises as well as data scientists and analysts to acquire and analyze data from multiple data sources. 
-
-However, the sheer number of available data sources makes it challenging for a user to identify sources that are truly beneficial to her integration or analysis task. First, many sources provide erroneous or stale data entries that can be detrimental to the quality of integration~\cite{Dong_vldb:2009, li:2012}. Second,  sources may provide  duplicate and redundant data making hard to identify the unique information a source is providing~\cite{bronzi:2013, li:2012}. Third, sources exhibit significant heterogeneity in representation of stored data (e.g., the schema they follow), making it challenging for a user to discover all relevant sources for her integration task~\cite{dassarma:2012}. Finally, acquiring and integrating data comes with a monetary and computational cost, and hence, integrating every available source may not be worthwhile or even feasible due to budget constraints. These challenges give rise to the natural questions of (i) how can one discover the value of data in a rigorous fashion and (ii) how can one identify the most beneficial data sources for arbitrary integration tasks. 
-
-Recent work~\cite{dong:vldb13, rekatsinas:2014} showed that given a fixed data domain, the benefit of integration can be specified using rigorous quality metrics such as {\em coverage}, {\em accuracy} and {\em freshness}. Moreover, this work introduced the paradigm of {\em source selection} to reason about the benefits and costs of acquiring and integrating data. Yet the proposed techniques focus on pre-defined integration tasks and do not provide support for a diverse set of users to specify their integration task. Moreover, this approach requires that a user knows exactly which quality metric is of importance to her or what her desired trade-off between multiple metrics is. This last requirement is rather unrealistic as users rarely know what is the right trade-off between different quality metrics. 
-
-In this paper we introduce our vision for a {\em source management system} that will enable users to specify heterogeneous integration tasks as keyword queries and allow them to interactively discover the most important sources for their specified task. Given an extensive collection of rigorous data quality metrics, we envision a system that automatically discovers the quality of different data sources and provides source selection capabilities to enable discovery and exploration of data sources. A key characteristic of the proposed system is to help users understand which quality metrics are important for their integration task and enable them to discover sources whose integration result will maximize the desired metrics under any specified budget constraints. 
-
-The remainder of the paper is organized as follows. In \Cref{sec:discovery} we discuss the key requirements and challenges in building a data source management system, including, defining and computing multiple quality metrics that characterize the content of sources, supporting diverse integration tasks expressed as keyword queries,  and enabling the interactive exploration of data sources. Then, \Cref{sec:overview} presents an overview of our proposed system, introduces the different modules of the system and proposed  techniques for addressing the aforementioned challenges. Finally, \Cref{sec:related} discusses related work and \Cref{sec:conclusion} concludes the paper. 
-
-\section{Discovering Valuable Sources}
-\label{sec:discovery}
-In this section we describe two tasks that require integrating data from multiple sources. Our goal is to identify common characteristics across these tasks and introduce the main operations that a source management system should support to enable the discovery of valuable sources. Finally we describe the challenges in each of these operations.
-
-\subsection{Motivating Examples}
-\label{sec:example}
-Data from multiple sources can be combined to perform diverse tasks. Next, we present two such tasks and identify the main elements needed to describe an integration task. The first task we consider corresponds to combining data from multiple news papers to validate a new theory in political sciences, while the second one corresponds to analyzing social media activity to spot emerging trends used for companies, news organizations and financial institutions. 
-
-We consider the Global Database of Events, Languages and Tone (GDELT)~\cite{leetaru:2013} where news articles from thousands of news domains (sources) are aggregated in a single repository. The articles are analyzed and events, defined as pairwise interactions between actors, are extracted from them. Actors typically correspond to well-known organizations, including countries and international organizations. The extracted events are quite diverse ranging from economic agreements between companies to violent acts between parties and are associated with certain locations, actors (corresponding to organizations), and a description containing the political views of the actors and a characterization of the event. Such a repository can be used for diverse analytics tasks. We focus on a scenario where analysts integrate events mentioned in a diverse set of news media sources and analyze them collectively to detect patterns and evaluate new theories. In particular, we focus on the work by Schutte et al.~\cite{schutte:2014}. In this work, the authors focus on finding causal relationships in spatiotemporal event data and use data from GDELT to build test cases for validating their theory. In particular, they are interested in examining how the civilian assistance to US forces changed in response to indiscriminate insurgent violence in Iraq. They focus on a specific time-window from 2003 to 2010, consider events in specific locations in Iraq and consider actors corresponding to specific ethnic groups in Iraq.
-
-Next, we consider the company TrendSpottr~\cite{trendspottr} and its partnership with Datasift~\cite{datasift}. Datasift is a company that extracts social media data from multiple sources, including Twitter, Facebook, Blogs etc., and offers a common API for accessing dozens of different data sources in real-time. TrendSpottr analyzes real-time data streams such as Twitter and Facebook to spot emerging trends at their earliest acceleration point. They require access to historical data, demographic information and geo location information as all of this data is important to the predictive model used by the company. Typical tasks supported by TrendSporttr are viral news discovery corresponding to different locations and specific organizations, brand and reputation monitoring, ranging from company acquisitions to sports,  market predictions and many others. 
-
-In both scenarios, we see that specifying an integration task involves providing information about its {\em location}, a set of exact instances or types of {\em organizations} or {\em people} involved in it and a {\em time window} associated with the task (this can be either a real-time task or a historical task over a past time-window). Moreover, it is easy to see that different types of data quality are implicitly relevant to each of the aforementioned tasks. For example, {\em completeness} is important for the first task but timeless is not crucial as delayed mentions of events will not affect the quality of the analysis. On the other hand, {\em timeliness} is very important in the second application. Analyzing sources that exhibit significant delays beats the purpose of the application which is early detection of trends. 
-
-\subsection{Key Operations}
-\label{sec:operations}
-Building upon the previous examples, we present the main operations that a source management system should support for discovering valuable sources.  First, we consider the input to such a system. Typically a user would start by providing the following information about the data integration task and the desired data sources: (i) a free-text description of the integration task corresponding to a collection of mentions to either specific objects or types (concepts) of locations, organizations and people, (ii) a selection of relevant data quality metrics from a list of supported metrics, and (iii) a desired budget characterizing the amount of money the user can afford for acquiring data. Given these specifications as input  a source management system should perform the following operations:
-\begin{enumerate}
-\item {\bf Discover.} Given the description of the integration task the system should automatically determine which sources are relevant to the task by mapping the content of the task description to the content of sources.
-\item {\bf Appraise.} After discovering the relevant sources to the integration task, the system should automatically find subsets of sources that if integrated together maximize the quality of integrated data under the imposed budget constraints by the user. The system should identify multiple solutions that correspond to maximizing different quality metrics. This is necessary to diversify the solutions presented to the user in the next phase. Exploring different solutions is necessary for the user to understand the trade-offs between different quality metrics and her budget constraints, thus, identifying the solution that is best suited for her task.
-\item {\bf Evaluate.} The solutions discovered in the previous phase should be presented to the user together with a concise description of their quality characteristics as well as a description of the data sources included in each of them. Moreover, the user should be able to explore the neighborhood of a solution by removing sources or examining solutions with similar characteristics that contain different sources.
-\end{enumerate}
-
-%While these operations are important The content of sources can change dynamically and the solution of source selection can change over time~\cite{rekatsinas:2014}, thus,  so the quality appraisal needs to be repeated. Point about repeated operations.
-
-\subsection{Challenges}
-Next, we discuss the main challenges in each of the operations presented above. 
-\subsubsection{Diverse Integration Tasks}
-\label{sec:diverse}
-The first challenge is supporting user queries over heterogeneous data domains. As illustrated in the previous examples, the different concepts or entities associated with an integration task can vary significantly. Moreover, the data from the sources can be both structured and unstructured. Therefore, a data source management system should be able to reason about the semantic content of different types of data ranging from tables to free-text. Moreover, the system should be able to semantically match the content of the user-provided task description to the content of the available sources included in the system. To fulfill these requirements one should be able to support scalable search over different types of data (e.g., structured and unstructured) while following an open-domain assumption and not restricting user queries to a pre-specified vocabulary.
-
-\subsubsection{Data Source Quality} 
-\label{sec:quality}
-The second challenge is defining the quality of data and being able to assess the quality of different sources in an automated way. Traditionally, the quality of data sources had been measured using the amount of erroneous information provided by the source. However, as discussed earlier there are multiple quality metrics that might be of interest to a user. 
-
-Given an integration task $\mathcal{I}$ let its data universe $\mathcal{U}(I)$ to be the set of all objects that are relevant to task $\mathcal{I}$. Notice, that $\mathcal{U}(I)$ is not fully known but only partial information is available for this universe via the data sources. We assume that each object $r \in \mathcal{U}(I)$ has a set of attribute values denoted by $r.A$. For example these attributes can correspond to a location or a type or instance of an organization as described in the previous examples. Moreover, we assume that either the objects in $\mathcal{U}(I)$ or their values may change over time. Given a set of sources $S$ relevant to task $I$ and an integration model $F$ we have that $F(S) \subseteq \mathcal{U}(I)$, where $F(S)$ denotes the set of objects extracted after integrating all sources in $S$. Using this notation we define the following metrics:
-
-\vspace{5pt}\noindent\textbf{Coverage.} The coverage of $S$ with respect to $\mathcal{U}(I)$ can be defined as the probability that an object chosen from $\mathcal{U}(I)$ uniformly at random will be present in $F(S)$. Notice that we do not require that the attributes of the object $r.A$ are correct.
-
-\vspace{5pt}\noindent\textbf{Accuracy.} The accuracy of $S$ with respect to $\mathcal{U}(I)$ can be defined as the probability that an object chosen from $F(S)$ uniformly at random is correct with respect to $\mathcal{U}(I)$. The latter means that the object must be present in $\mathcal{U}(I)$ and all its attributes should have the correct values capturing errors due to both noisy and stale data.
-
-\vspace{5pt}\noindent\textbf{Timeliness.} The timeliness of $S$ with respect to $\mathcal{U}(I)$ can be defined as the cumulative probability distribution of a change in the objects of $\mathcal{U}(I)$ being reflected in $F(S)$ with a delay of at most $t$ time units. Notice that this last quality metric does not correspond to a single number but an entire distribution characterizing the delays the source exhibits.
-
-\vspace{5pt}\noindent\textbf{Publication bias.} The publication bias of $S$ with respect to $\mathcal{U}(I)$ can be defined as the selective revealing or suppression of data entries from $\mathcal{U}(I)$. More formally we can measure the publication bias of $S$ by analyzing the publishing probability of $S$ for all data entries in $\mathcal{U}(I)$. The higher the mass of this distribution is concentrated over a specific subset of entries from $\mathcal{U}(I)$ the higher the bias of the source should be. The bias of a source can be quantified using the entropy of the source publishing distribution.
-
-\vspace{5pt}Notice that all definitions presented above, compare the content of a source or a set of sources with the data universe corresponding to an integration task. However, the actual content of the universe is unknown and only partial information is available via content samples from the sources. Given this, the main challenge becomes combining the available source samples to extract a sufficient view of the data universe. Another challenge is that one should be able to compute the aforementioned quality metrics efficiently for any set of sources. Computing the quality of any possible set of sources in advance is obviously prohibitive. However, for certain cases~\cite{dong:vldb13,rekatsinas:2014}, one can estimate the overall quality for any set of sources by building offline quality profiles for each individual source and then combining those during source selection to estimate the overall quality for an arbitrary set of sources. The high-level intuition behind this approach is that each of the aforementioned quality metrics is associated with a random variable following a specific probability distribution (i.e., a Bernoulli distribution for coverage and accuracy and an empirical distribution for timeliness). If the sources are assumed to be independent the corresponding random variables are also independent, and hence, the probabilities corresponding to the quality of a set of sources can be computed efficiently using the decomposable disjunction formula. For example, the overall coverage for a set of sources $S_1$ and $S_2$ with individual coverages $C(S_1) = 0.6$ and $C(S_2) = 0.7$ corresponds to the probability that an item from $\mathcal{U}(I)$ is either covered by $S_1$ or covered by $S_2$ and is $C(S_1,S_2) = 1 - (1-0.6)(1-0.7) = 0.88$.
-
-
-In reality, however, sources are far from independent~\cite{berti-equille:sailing, dong:2009}, as they exhibit overlaps, copying relationships and/or may contradict each other. These relationships make the quality random variables for each source dependent. Estimating the aforementioned quality metrics under the presence of dependencies imposes a major challenge as: (i) it  requires extracting the source dependencies from available source samples and (ii) devising efficient techniques for computing the probability of the overall quality random variables during query evaluation. In fact, the latter often corresponds to performing probabilistic inference over a joint distribution formed by the quality random variables corresponding to the desired set of sources.
-
-\subsubsection{Interactive Evaluation}
-\label{sec:eval}
-As mentioned above, users should be able to specify a certain budget for their integration task. This can be either a monetary budget, limiting the amount of data that can be acquired, or a budget on the number of sources that a source selection solution should contain. The latter is particularly useful when a user wants to verify the content of sources manually. While specifying a constraint on the integration budget is natural to users, specifying a constraint on the data quality with respect to the aforementioned metrics is rather intricate due to the interdependencies between the different metrics and we expect that not even expert users know the exact data quality requirements of a task. Consider for example a political scientist analyzing news papers articles to forecast interesting events. Imposing a constraint on using only data sources that have exhibited zero delay with respect to certain events may reduce the accuracy of the integration result. Moreover, users may not know what is the feasible level of quality given their budget and what are the trade-off between solutions that focus on maximizing the different quality metrics in isolation. For example, selecting sources optimizing for accuracy may lead to an integration result of low coverage.  
-
-So a major challenge for a source management system is to guide the user through the different source selection solutions that satisfy the user's budget and help her understand the trade-off between the integration quality achieved by different solutions. We argue that this is feasible only through an interactive process where the user will be able to explore the feasible solution space following suggestions of the source management system. This will enable users to understand the interdependencies between the different quality metrics with respect to their integration task and identify the particular solution that suits their application. The latter raises the following challenges: (i) how can a user explore the solution space efficiently, (ii) how can a source management system present the quality profile for a set of sources in a concise and meaningful way, and (iii) what are the right hints that the system should present to the user to facilitate the exploration of the solution space. 
-
-\section{System Overview}
+\section{Discovering Profitable Sources}
 \label{sec:overview}
-In this section we propose a preliminary design that aims to address the challenges specified in the previous section. An overview of the proposed architecture for a data source management system is shown in \Cref{fig:system}. The system is composed of (i) a data extractor module, responsible for collecting the raw data from different sources, (ii) a source analysis engine and (iii) a query engine. The source analysis engine analyzes the content of sources, evaluates their quality with respect to the quality metrics introduced in the previous section and keeps an index describing both the content and the quality of each source. The query engine is given a user query (i.e., a description of the desired integration task) as input. Using this input it first identifies the data universe corresponding to the query, and then, the set relevant sources. Next, it detects the most valuable sources for integration using source selection and presents the results to the user while enabling interactive exploration. Next, we focus on the source analysis engine and the query engine and discuss how these two components address the challenges and requirements presented above. We omit the first module of extracting data from different sources as it does not entail any technical challenges.
+In this section we provide an overview of the architecture a data source management should have and the functionalities it should support and present the key challenges in each of these operations.
 
+\subsection{System Overview}
+\label{sec:architecture}
+We envision a data source management system following the architecture shown in \Cref{fig:system}. The system is composed of (i) a data extractor module, (ii) a source analysis engine and (iii) a query engine. The basic operations of a data source management system can be separated in an {\em offline} and an {\em online} phase. During the offline phase  the data extractor module is responsible for extracting and storing raw data from different data sources. Then, the source analysis engine analyzes this raw data to identify the content of sources, evaluate their quality with respect to a collection of data quality metrics and keeps an index describing both the content and the quality of each source. This index will be used during the online phase, when a user interacts with the system and discovers the most profitable sources for her application. The aforementioned operations may be performed once, if the sources are static, or repeatedly over time, if the sources are dynamic and their content changes. 
 \begin{figure}
 	\begin{center}
 	\includegraphics[clip,scale=0.5]{fig/system.eps}
+	\vspace{-20pt}
 	\caption{Source Management System Architecture.}
 	\label{fig:system}
 	\end{center}
+	\vspace{-20pt}
 \end{figure}
+During the online phase, a user gives a description of her requirements as input to the query engine which detects the most profitable sources using source selection. Typically a user would start by providing the following information about her application and the desired data sources: (i) a free-text description of the task corresponding to a collection of mentions to either abstract concepts (e.g., "commerce treaties") or specific objects, such as locations, organizations, people and items, (ii) a selection of relevant data quality metrics from a list of supported metrics, and (iii) a desired budget characterizing the amount of money the user can afford for acquiring data. Given these specifications as input, the query engine should perform the following operations:
+\begin{enumerate}
+\item {\bf Discover.} Given the description of the integration task the system should automatically determine which sources are relevant to the task by mapping the content of the task description to the content of sources.
+\item {\bf Appraise.} After discovering the relevant sources to the integration task, the system should automatically find subsets of sources that if integrated together maximize the integration profit under the imposed quality and budget requirements of the user. The system should identify multiple solutions that correspond to different trade-offs among different quality metrics. 
+\item {\bf Evaluate.} The solutions discovered in the previous phase should be presented to the user together with a concise description of their quality characteristics as well as a description of the data sources included in each of them. Moreover, the user should be able to interactively change the returned solution by removing sources or examining solutions with similar characteristics that contain different sources. The latter enables the user to identify the solution that is best suited for her task.
+\end{enumerate}
 
+\subsection{Challenges}
+Next, we discuss the main challenges in each of the operations presented above. 
+\subsubsection{Analyzing the Content of Sources}
+\label{sec:content}
+The first challenge is analyzing the content of diverse data sources and being able to identify the data domain of each source. Being able to analyze diverse sources, both in terms of content and data type, is necessary for a multi-user environment where users with varying requirements interact with the system. For example, the data source management system should be able to analyze the content of a structured Web table providing financial data and the unstructured content of news articles extracted from a news paper and for each discover the corresponding domain. Therefore, a data source management system should be able to reason about the semantic content of different types of data ranging from tables to DOM trees to free-text. To do this the proposed system needs to access the raw data from each data source. Accessing and analyzing the entire content of a source is not possible for all sources as many require a monetary fee for accessing their data. Nevertheless, there are many cases where sources offer free samples or limited-transaction access to their content. This raises further challenges, such as, how can one obtain a comprehensive view on the different concepts covered by a data source, how often should one obtain and analyze content samples to identify the rate of content change for a source and how can one determine the right samples to obtain an accurate estimate of the sources quality.
+
+\subsubsection{Data Source Quality} 
+\label{sec:quality}
+The second challenge is defining the quality of data and being able to assess the quality of different sources in an automated way. Traditionally, the quality of data sources had been measured using the percentage of data and the amount of erroneous information provided by the source. In the last decade, however, there has been a growing interest in defining diverse quality metrics to assess the quality of data~\cite{pipino:2002}. Nevertheless, most of these metrics are hard to quantify and measure for arbitrary datasets. Next, we focus on a collection of data quality metrics that can be expressed as probability distributions and hence admit rigorous definitions. The following list extends metrics introduced in our recent work~\cite{dong:vldb13,rekatsinas:2014}.
+
+Measuring the quality of a data source requires comparing its content with the content of the {\em data universe} whose data entries the source is reporting~\cite{rekatsinas:2014}. Given an integration task $\mathcal{I}$ let its data universe $\mathcal{U}(I)$  be the set of all real-world objects that are relevant to task $\mathcal{I}$. Moreover, let $\mathcal{D}(\mathcal{U}(I))$ be the domain of $\mathcal{U}(I)$ corresponding to a set of concepts (e.g., the domain can be described by the set \{location, sports type\}) and $\mathcal{U}(I).e$ be the set of real-world objects from $\mathcal{I}$ that correspond to an element $e \in \mathcal{D}(\mathcal{U}(I))$. Notice, that $\mathcal{U}(I)$ is not fully known but only partial information is available for this universe via the data sources. We assume that each object $r \in \mathcal{U}(I)$ has a set of attribute values denoted by $r.A$. For example, these attributes may correspond to a location or an organization or a time point. Moreover, we assume that either the objects in $\mathcal{U}(I)$ or their values may change over time. Given a set of sources $\bar{S}$ relevant to task $I$ and an integration model $F$ we have that $F(\bar{S}) \subseteq \mathcal{U}(I)$, where $F(\bar{S})$ denotes the set of objects extracted after integrating all sources in $\bar{S}$. Using this notation we define the following metrics:
+
+\vspace{2pt}\noindent\textbf{Coverage.} The coverage of $\bar{S}$ with respect to $\mathcal{U}(I)$ can be defined as a multinomial distribution over all elements of $\mathcal{D}(\mathcal{U}(I))$ where the probability value for an element $e \in \mathcal{D}(\mathcal{U}(I))$ corresponds to the probability that an object chosen from $\mathcal{U}(I).e$ uniformly at random will be present in $F(\bar{S})$. Notice that we do not require that the attributes of the object $r.A$ are correct.
+
+\vspace{2pt}\noindent\textbf{Accuracy.} The accuracy of $\bar{S}$ with respect to $\mathcal{U}(I)$ can be defined as a multinomial distribution over all elements of  $\mathcal{D}(\mathcal{U}(I))$ where the probability value for an element $e \in \mathcal{D}(\mathcal{U}(I))$ corresponds to the probability that an object chosen from $F(\bar{S})$ uniformly at random is correct with respect to $\mathcal{U}(I).e$. The latter means that the object must be present in $\mathcal{U}(I).e$ and all its attributes mentioned in $\bar{S}$ should have the correct values. This definition of accuracy is equivalent to the traditional definition of accuracy focusing on erroneous values~\cite{dong:vldb13} and the metric of freshness (i.e., the percentage of up-to-date data in a source) focusing on state data~\cite{rekatsinas:2014}.
+
+\vspace{2pt}\noindent\textbf{Timeliness.} The timeliness of $\bar{S}$ with respect to $\mathcal{U}(I)$ can be defined as the cumulative probability distribution of a change in the objects of $\mathcal{U}(I)$ being reflected in $F(\bar{S})$ with a delay of at most $t$ time units. This quality metric can be extended to an ensemble of distributions, one for each element $e \in \mathcal{D}(\mathcal{U}(I))$.
+
+\vspace{2pt}\noindent\textbf{Publication bias.} The publication bias of $\bar{S}$ with respect to $\mathcal{U}(I)$ can be defined as the selective revealing or suppression of data entries from $\mathcal{U}(I)$. More formally we can measure the publication bias of $\bar{S}$ by analyzing the publishing probability of $\bar{S}$ for all elements of $\mathcal{D}(\mathcal{U}(I))$. The higher the mass of this distribution is concentrated over a specific subset of entries from $\mathcal{D}(\mathcal{U}(I))$ the higher the bias of the source should be. The amount of bias in a source can be quantified using the entropy of the source publishing distribution. However, to identify the actual bias of the source the entire publishing distribution should be published.
+
+\vspace{2pt}Notice that all definitions presented above, compare the content of a source or a set of sources with the data universe corresponding to an integration task. However, the actual content of the universe is unknown and only partial information is available via content samples from the sources. Given this, the main challenge becomes combining the available source samples to extract a sufficient view of the data universe. Another challenge is that one should be able to compute the aforementioned quality metrics efficiently for any set of sources. Computing the quality of any possible set of sources in advance is obviously prohibitive. However, for certain cases~\cite{dong:vldb13,rekatsinas:2014}, one can estimate the overall quality for any set of sources by building offline quality profiles for each individual source and then combining those during source selection to estimate the overall quality for an arbitrary set of sources. The high-level intuition behind this approach is that each of the aforementioned quality metrics is associated with a random variable following a specific probability distribution (i.e., a Bernoulli distribution for coverage and accuracy and an empirical distribution for timeliness). If the sources are assumed to be independent the corresponding random variables are also independent, and hence, the probabilities corresponding to the quality of a set of sources can be computed efficiently using the decomposable disjunction formula. For example, the overall coverage for a set of sources $S_1$ and $S_2$ with individual coverages $C(S_1) = 0.6$ and $C(S_2) = 0.7$ corresponds to the probability that an item from $\mathcal{U}(I)$ is either covered by $S_1$ or covered by $S_2$ and is $C(S_1,S_2) = 1 - (1-0.6)(1-0.7) = 0.88$.
+
+In reality, however, sources are far from independent~\cite{berti-equille:sailing, dong:2009,pochampally:2014}, as they exhibit overlaps, copying relationships and/or may contradict each other. These relationships make the quality random variables for each source dependent. Estimating the aforementioned quality metrics under the presence of dependencies imposes a major challenge as: (i) it  requires extracting the source dependencies from available source samples and (ii) devising efficient techniques for computing the probability of the overall quality random variables during query evaluation. In fact, the latter often corresponds to performing probabilistic inference over a joint distribution formed by the quality random variables corresponding to the desired set of sources.
+
+Finally, there are multiple quality metrics and as mentioned above, it might be hard for users to know in advance which of these metrics is more important or what are the possible trade-offs among these metrics. Instead of optimizing the profit of integration with respect to a single quality metric or adopting a predefined weighting across metrics, source selection should be viewed as a multi-objective optimization problem where each quality metric is considered as a separate objective. In multi-objective optimization there is usually no single feasible solution that is the optimum for all the objective functions simultaneously. Therefore, attention is paid only to the {\em Pareto optimal solutions}, i.e., solutions that cannot be improved in any of the objectives without degrading at least one of the other objectives. The set of Pareto optimal solutions is called the {\em Pareto front}. The user should be able to explore the different solutions on the Pareto front to identify which solution suits her task the best. 
+
+\subsubsection{Diverse User Applications}
+\label{sec:diverse}
+The next challenge is supporting user queries over heterogeneous data domains. The different concepts or entities associated with user applications can vary significantly. Therefore, a data source management system should be able to reason about the semantic content of user tasks. To fulfill these requirements one should be able to support scalable search over different types of data (e.g., structured and unstructured) while following an open-domain assumption and not restricting user queries to a pre-specified vocabulary. Techniques from keyword search applied to lists~\cite{pimplikar:2012} or web-tables~\cite{dassarma:2012} can be extended to suit our needs.
+
+\subsubsection{Interactive Evaluation}
+\label{sec:eval}
+As mentioned above, users should be able to specify a certain budget for their integration task. This can be either a monetary budget, limiting the amount of data that can be acquired, or a budget on the number of sources that a source selection solution should contain. The latter is particularly useful when a user wants to verify the content of sources manually. While specifying a constraint on the integration budget is natural to users, specifying a constraint on the data quality with respect to the aforementioned metrics is rather intricate due to the interdependencies between the different metrics and we expect that not even expert users know the exact data quality requirements of a task. Consider for example a political scientist analyzing news papers articles to forecast interesting events. Imposing a constraint on using only data sources that have exhibited zero delay with respect to certain events may reduce the coverage of the integration result. Moreover, users may not know what is the feasible level of quality given their budget and what are the trade-offs between the solutions that focus on maximizing the different quality metrics in isolation. For example, selecting sources optimizing for accuracy may lead to low coverage.  
+
+So a major challenge for a source management system is to guide the user through the different source selection solutions that satisfy the user's budget and help her understand the trade-off between the integration quality achieved by different solutions. We argue that this is feasible only through an interactive process where the user will be able to explore the feasible solution space following suggestions of the source management system. This will enable users to understand the interdependencies between the different quality metrics with respect to their integration task and identify the particular solution that suits their application. The latter raises the following challenges: (i) how can a user explore the solution space efficiently, (ii) how can a source management system present the quality profile for a set of sources in a concise and meaningful way, (iii) what are the right hints that the system should present to the user to facilitate the exploration of the solution space, (iv) how can the system take advantage of user feedback to guide the user in her interactive exploration of the solution space. 
+
+\section{Ontologies with Data Sources}
+\label{sec:corgraph}
+In this section we propose a preliminary design that aims to instantiate the source analysis and query engine module of the architecture proposed above and address the corresponding challenges. As demonstrated above one of the major challenges was reasoning about the content of sources focusing on diverse data domains. We propose using an {\em ontology} organized as a graph (e.g., Google's Knowledge Graph~\cite{kg}) as a global relaxed schema for describing arbitrary data universes. Knowledge bases are an example of such ontology, thus, in the remainder of the paper we will use the term knowledge base to refer to ontologies. A knowledge base acts as an information repository that provides a means for information to be collected, organized, shared, searched, and utilized. A knowledge base can be viewed as a collection of {\em facts} that describe information about entities and their properties, and {\em concepts} that describe information about entity types and their properties. Both facts and concepts can be represented as nodes of the knowledge base. Given a knowledge base, a data universe (e.g., ``Sports in the USA") can be described as a collection of concepts and/or entities. An example knowledge base is shown in \Cref{fig:kgcg}. Next, we describe how one can build the source analysis module and the query engine module, shown in \Cref{fig:system}, around a knowledge base.
 
 \subsection{Source Analysis Module}
-A data source management system should be able to support sources covering completely heterogeneous data universes. For example, it should be able to analyze the content of a structured Web table providing financial data and the unstructured content of news articles extracted from a news paper. This is necessary for diverse integration tasks as described in \Cref{sec:diverse}. 
-
-We propose using a {\em knowledge graph}, i.e., a {\em knowledge base} organized as a graph (e.g., Google Knowledge Graph), as a global relaxed schema for describing arbitrary data universes. A knowledge base acts as an information repository that provides a means for information to be collected, organized, shared, searched, and utilized. A knowledge base can be viewed as a collection of {\em facts} that describe information about entities and their properties, and {\em concepts} that describe information about entity types and their properties. Both facts and concepts can be represented as nodes of the knowledge graph. Given a knowledge graph, a data universe (e.g., ``Sports in the USA") can be described as a collection of concepts and/or entities. To reason about the different data universes the available sources cover and the source quality we propose augmenting the knowledge graph with a {\em correspondence graph}.
+To reason about the different data universes the available sources cover and the source quality we propose augmenting the knowledge base with a {\em correspondence graph}.
 
 \begin{figure}
 	\begin{center}
 	\includegraphics[clip,scale=0.4]{fig/kgcg}
-	\caption{An example of a knowledge graph and a correspondence graph with a universe node corresponding to the population of countries in Asia.}
+	\caption{An example of a knowledge base and a correspondence graph with a universe node corresponding to the population of countries in Asia.}
 	\label{fig:kgcg}
 	\end{center}
 	\vspace{-20pt}
@@ -193,14 +173,15 @@ The universe nodes in the correspondence graph correspond to a clustering of the
 After learning the universe nodes in the correspondence graph we can collectively analyze the relevant content of all sources corresponding to each node in order to extract a quality profile for each source. In particular, we propose following an approach similar to Rekatsinas et al.~\cite{rekatsinas:2014} where samples from all the sources are integrated into a single dataset corresponding to the content of the data universe and then each individual sample is compared with the integrated data to extract the source quality profile. 
 
 Apart from the individual source quality profiles we also need to learn the quality dependencies across different sources. Recall that the quality metrics presented in \Cref{sec:quality} 
-can be expressed as probabilities corresponding to a distribution associated with source-quality random variables. In fact when sources are dependent these random variables are dependent, and hence, these dependencies need to be extracted from the available source samples.  We conjecture that these dependencies can be represented using a {\em factor graph}, i.e., a particular type of graphical model that enables efficient computation of marginal distributions, over the source random variables. We plan to explore how structure learning techniques from the statistical relational learning literature~\cite{getoor:2007} can be used to solve this problem. These factor graphs will also enable computing the quality of an arbitrary set of sources via probabilistic inference. The latter is necessary for solving the problem of sources selection during query time as we describe next. 
+can be expressed as probabilities corresponding to a distribution associated with source-quality random variables. In fact when sources are dependent these random variables are dependent, and hence, these dependencies need to be extracted from the available source samples.  We conjecture that these dependencies can be represented using a {\em factor graph}~\cite{koller:2009}, i.e., a particular type of graphical model that enables efficient computation of marginal distributions, over the source random variables. We plan to explore how structure learning techniques from the statistical relational learning literature~\cite{getoor:2007} can be used to solve this problem. These factor graphs will also enable computing the quality of an arbitrary set of sources via probabilistic inference. The latter is necessary for solving the problem of sources selection during query time as we describe next. 
 
 \subsection{Query Engine}
-Queries against a data source management system correspond to descriptions of an integration or analytics task. We envision a system where queries will correspond to free-text descriptions of an integration task containing references to multiple entities and concepts. Part of the query will correspond to specifying an integration budget constraint either in terms of the maximum amount of money to spend for acquiring data or the maximum number of sources to be used for the task. Finally, the user will have the capability of selecting which quality metrics are relevant to her integration task. Given such a query the query engine of a source management system should perform the following steps: (i) first the content of the query should be mapped to the knowledge graph and the corresponding universe nodes of the correspondence graph, (ii) the universe node contains information about which sources are relevant to the task of the user and restricts the scope of available sources for performing source selection, (iii) the query engine should find the subset of sources that maximize the quality of the integration result with respect to the selected quality metrics given the specified budget constraint, (iv) instead of presenting a single answer to the user or a ranked list of answers, the query engine should allow the user to interactively explore the retrieved results. Next, we provide an overview of each of these steps.
+Queries against a data source management system correspond to descriptions of an integration or analytics task. We envision a system where queries will correspond to free-text descriptions of an integration task containing references to multiple entities and concepts. Part of the query will correspond to specifying an integration budget constraint either in terms of the maximum amount of money to spend for acquiring data or the maximum number of sources to be used for the task. Finally, the user will have the capability of selecting which quality metrics are relevant to her integration task. Given such a query the query engine of a source management system should perform the following steps: (i) first the content of the query should be mapped to the knowledge base and the corresponding universe nodes of the correspondence graph, (ii) the universe node contains information about which sources are relevant to the task of the user and restricts the scope of available sources for performing source selection, (iii) the query engine should find the subset of sources that maximize the quality of the integration result with respect to the selected quality metrics given the specified budget constraint, (iv) instead of presenting a single answer to the user or a ranked list of answers, the query engine should allow the user to interactively explore the retrieved results. Next, we provide an overview of each of these steps.
 
-Given the text of a query, we can use techniques similar to those mentioned before for annotating the content of sources with labels corresponding to concepts and instances of the knowledge graph. Following the mixed membership model described above, we can considering the query as a collection of concepts and instances and find its mixture proportions with respect to the universe nodes in the correspondence graph. Inferring the mixture proportions can be done using approaches similar to the ones introduce by Blei et al.~\cite{blei:2003}. Once the mixture proportions are known then we can identify the sources that are relevant to each of the universe nodes having a non-zero mixture proportion for the query by traversing the correspondence graph. To identify the set of valuable sources for the given query we can solve the problem of source selection~\cite{dong:vldb13, rekatsinas:2014}. The benefit of integration can be described as a linear combination of the integration quality of each individual universe node using the mixture proportions as weights.
+Given the text of a query, we can use techniques similar to those mentioned before for annotating the content of sources with labels corresponding to concepts and instances of the knowledge base. Following the mixed membership model described above, we can consider the query as a collection of concepts and instances and find its mixture proportions with respect to the universe nodes in the correspondence graph. Inferring the mixture proportions can be done using approaches similar to the ones introduce by Blei et al.~\cite{blei:2003}. Once the mixture proportions are known then we can identify the sources that are relevant to each of the universe nodes having a non-zero mixture proportion for the query by traversing the correspondence graph. To identify the set of valuable sources for the given query we can solve the problem of source selection~\cite{dong:vldb13, rekatsinas:2014}. The benefit of integration can be described as a linear combination of the integration quality of each individual universe node using the mixture proportions as weights.
 
-Source selection identifies the optimal set of sources to be used for a specific integration task by trying to maximize the benefit of integration with respect to any budget constraints. The benefit of integration can be expressed as a function of the quality of the integration result. However, there are multiple quality metrics and as mentioned above, it might be hard for user to know in advance which of these metrics is more important or what are the possible trade-offs among these metrics. Instead of optimizing the benefit of integration with respect to a single quality metric or adopting a predefine weighting across metrics, we propose casting source selection as a multi-objective optimization problem where each quality metric is considered as a separate objective. In multi-objective optimization there is usually no single feasible solution that is the optimum for all the objective functions simultaneously. Therefore, attention is paid only to the {\em Pareto optimal solutions}, i.e., solutions that cannot be improved in any of the objectives without degrading at least one of the other objectives. The set of Pareto optimal solutions is called the {\em Pareto front}. We argue that the user should be able to explore the different solutions on the Pareto front to identify which solution suits her task the best. Discovering all the solutions on the Pareto front might be expensive, thus, efficient approximation and exploration techniques have been proposed in the optimization literature~\cite{wilson:2001}. Next, we propose a two-level visualization approach for exploring solutions on the Pareto front. 
+Source selection identifies the optimal set of sources to be used for a specific integration task by trying to maximize the profit of integration with respect to any budget constraints. 
+As discussed in the previous section source selection should be cast as a multi-objective optimization problem and the query engine should be able to find the set of Pareto optimal solutions. Discovering all the solutions on the Pareto front might be expensive, thus, efficient approximation and exploration techniques have been proposed in the optimization literature~\cite{wilson:2001}. Moreover, algorithms for computing the Pareto frontier of a finite set of alternatives have been studied in the skyline query literature~\cite{godfrey:2007,kossmann:2002}. Next, we propose a two-level visualization approach for exploring solutions on the Pareto front. 
 
 \begin{figure}
 	\begin{center}
@@ -208,43 +189,177 @@ Source selection identifies the optimal set of sources to be used for a specific
 	\caption{A fictional bubble chart describing the sources of a potential solution to a user query.}
 	\label{fig:bubble}
 	\end{center}
-	\vspace{-10pt}
+	\vspace{-20pt}
 \end{figure}
 
 We argue that first the query engine system should return a ranked list with {\em diverse} solutions on the Pareto frontier and mention the quality characteristics for the selected set of sources, the number of sources and the total integration cost. If the user selects to explore the content of the solution the system will present a bubble chart will all the sources in the solution. The dimensions of the bubble chart should be characterize the content of each source while the size of the bubble should correspond to the actual size (with respect to number of entries) of each source. We argue that the following dimensions are necessary to describe each source: (i) the {\em concept focus} of the source, i.e., number of different concepts mentioned in the source, and (ii) the {\em instance focus} of the source, i.e., the number of different instances mentioned in the source. If the user selects a specific bubble from the bubble chart details regarding the name and quality of the sources should be presented to the user. Notice that this information can be directly retrieved by the correspondence graph an does not need to be computed during query time. An example of such a bubble chart is shown in \Cref{fig:bubble}. Finally, we envision a system that will provide the user with the capability of exploring the neighborhood of a solution from the initial list. This can be done (i) either by removing sources from a running solution by allowing the user to select the ones to be removed from the bubble chart or (ii) by recommending solutions in the Pareto frontier neighborhood of the running solution. Notice that all the above functionalities require reasoning about the distance of solutions on the Pareto frontier introducing a new challenge.
-
-%\ \\Descibe finding solutions on pareto frontier, describe how to diversify solutions. See papers on probing pareto frontier. 
-%\ \\How to visualize solutions (coverage, freshness source bubble plot from SIGMOD 2014), how to explore the pareto frontier and neighborhood of solutions; a two level approach: {\bf Level 1:} return ranked list with ``distant" solutions on the pareto curve just mention quality characteristics, number of sources and cost. Present an average characteristic vector, no names or individual characteristics of sources, {\bf Level 2:} once the user selects a solution from the ranked list, then present bubble graph based on characteristics of sources. The two dimensions should be "concept focus" and "instance focus", bubble size should correspond to source size (whatever the source is reporting). The user can click to remove a source from the solution and the characteristics (overall quality, cost) of the solution should be updated. Apart from removing sources, neighboring solutions of the initial solution on the pareto frontier should be presented in a separate list. 
-
-
-%\ \\Present architecture framework. Core module {\em knowledge graph and correspondence graph}. Modules:
-%\begin{enumerate}
-%\item Query engine: free-text queries mapped to entities and concepts. Quality metrics specified, cost specified, time-points of interest. 
-%\item Correspondence graph: Go from entities to set of relevant sources (ground the domains of interest as a clusters of concepts and instances). 
-%\item Source quality estimation: Given quality annotations of correspondence graph estimate the quality for future time points. The annotations will be either on edges from domain clusters to sources (for independent sources) or factor graphs at the cluster level for dependent sources. 
-%\item Source selection module: Find source selection solutions on pareto frontier. Given quality and cost constraints find solutions on pareto frontier. 
-%\item Query optimizer: find diverse solutions on pareto frontier. Speculative query answering for neighborhood on pareto frontier. 
-%\item Result visualization: Present results to user. 
-%\end{enumerate}
-
-%\subsection{Supporting Diverse Integration Tasks}
-%
-%\ \\Analyze concepts of knowledge graph and correspondence graph. Describe construction of correspondence graph. How can you compute underlying quality characteristics of each source (i.e., compare content of sources).
-%
-%\subsection{Estimating the Quality of Integration}
-%
-%\ \\Describe how a correspondence graph can be extended with factor graphs and describe compilation techniques to compute quality of integration. Learn dependencies for different metrics. For each domain cluster: the domain corresponds to a union of concepts and instances.
 
 
 \section{Related Work}
 \label{sec:related}
 Most of the prior work focuses on isolated aspects of data source management, and to our knowledge, there has been no systematic approach to developing a source management system over large numbers of data sources. There is much work on the problems of schema mapping and semantic integration of different
-sources~\cite{cafarella:2009,venetis:11,oktie:11, oktie:13}. That line of work focuses on the construction of a global schema or a knowledge graph describing the domain of the data sources, and its final goal is not reasoning about the concepts that sources cover. Moreover, most of that work focuses on sources from a specific domain and does not present results for largely heterogeneous sources. Web table search~\cite{cafarella:2009,limaye:2010, dassarma:2012,yakout:2012, fan:2014} is also closely related to data source search. Most of the proposed techniques consider user queries and return tables related to specific keywords present in the query. However, the keyword based techniques fail to capture the semantics of the language, i.e., the intentions of the users, and thus they can only go as far as giving relevant hits. Using the knowledge graph as the entry point of data source search will enable us to clearly capture the intentions of the user and return more useful results. Further, extending data source search to recommend sets of sources to be integrated and analyzed collectively, as we propose to do, is a useful functionality in many domains (e.g., data driven journalism) where users are not experts and want an efficient way of exploring multiple data sources.  Finally, our work on source selection~\cite{dong:vldb13, rekatsinas:2014} has consider problems where all sources follow a common schema and focus on a single data universe.
+sources~\cite{cafarella:2009,venetis:11,oktie:11, oktie:13}. That line of work focuses on the construction of a global schema or a knowledge graph describing the domain of the data sources, and its final goal is not reasoning about the concepts that sources cover. Moreover, most of that work focuses on sources from a specific domain and does not present results for largely heterogeneous sources. Web table search~\cite{cafarella:2009,limaye:2010, dassarma:2012,yakout:2012, fan:2014} is also closely related to data source search. Most of the proposed techniques consider user queries and return tables related to specific keywords present in the query. However, the keyword based techniques fail to capture the semantics of the language, i.e., the intentions of the users, and thus they can only go as far as giving relevant hits. Using the knowledge graph as the entry point of data source search will enable us to clearly capture the intentions of the user and return more useful results. Further, extending data source search to recommend sets of sources to be integrated and analyzed collectively, as we propose to do, is a useful functionality in many domains (e.g., data driven journalism) where users are not experts and want an efficient way of exploring multiple data sources.  Finally, our work on source selection~\cite{dong:vldb13, rekatsinas:2014} has considered problems where all sources follow a common schema and focus on a single data universe.
 
 \section{Conclusions}
 \label{sec:conclusion}
-In this paper, we argued that due to the vast amounts of available data sources it not beneficial for users to integrate all available sources as this can either be detrimental to the quality for the integration result or very expensive due to the fees sources charge to grant access to their data. We presented our vision for a data source management system that will enable users to not only discover the most valuable sources for their integration or analysis task given their budget but also enables the interactive exploration of different sets of sources allowing the user to truly understand the quality and cost trade-off between different integration options. We discussed the major challenges in building such a system including supporting fully heterogeneous integration tasks and multiple users, assessing the quality of data sources and enabling the interactive exploration over different sets of sources and presented a preliminary design of a source management system addressing these challenges. We believe that it is really about time for a new type of data portals that will allow data enthusiasts to find the most beneficial data sets for their tasks and limit the man-hours spent in validating the quality of data. 
+In this paper, we argued that due to the vast numbers of available data sources it not beneficial for users to integrate all available sources as this can either be detrimental to the quality for the integration result or very expensive due to the fees sources charge to grant access to their data. We presented our vision for a data source management system that will enable users to not only discover the most valuable sources for their integration or analysis task given their budget but will also enable the interactive exploration of different sets of sources allowing the user to truly understand the quality and cost trade-off between different integration options. We discussed the major challenges in building such a system including supporting fully heterogeneous integration tasks and multiple users, assessing the quality of data sources and enabling the interactive exploration over different sets of sources and presented a preliminary design of a source management system addressing these challenges. We believe that it is really about time for a new type of data portals that will allow data enthusiasts to find the most beneficial data sets for their tasks and limit the man-hours spent in validating the quality of data. 
+
 {\small
-\bibliographystyle{abbrv}
-\bibliography{sourcify}}
+\begin{thebibliography}{10}
+
+\bibitem{spotlight}
+Dbpedia spotlight.
+\newblock \url{https://github.com/dbpedia-spotlight/}.
+
+\bibitem{sdm:2013}
+R.~Balasubramanyan and W.~W. Cohen.
+\newblock Regularization of latent variable models to obtain sparsity.
+\newblock In {\em SDM}, 2013.
+
+\bibitem{berti-equille:sailing}
+L.~Berti-Equille, A.~D. Sarma, X.~Dong, A.~Marian, and D.~Srivastava.
+\newblock Sailing the information ocean with awareness of currents: Discovery
+  and application of source dependence.
+\newblock In {\em CIDR}, 2009.
+
+\bibitem{blei:2003}
+D.~M. Blei, A.~Y. Ng, and M.~I. Jordan.
+\newblock Latent dirichlet allocation.
+\newblock {\em J. Mach. Learn. Res.}, Mar. 2003.
+
+\bibitem{bronzi:2013}
+M.~Bronzi, V.~Crescenzi, P.~Merialdo, and P.~Papotti.
+\newblock Extraction and integration of partially overlapping web sources.
+\newblock {\em PVLDB}, 3, 2013.
+
+\bibitem{cafarella:2009}
+M.~J. Cafarella, A.~Halevy, and N.~Khoussainova.
+\newblock Data integration for the relational web.
+\newblock {\em PVLDB}, 2009.
+
+\bibitem{dassarma:2012}
+A.~Das~Sarma, L.~Fang, N.~Gupta, A.~Halevy, H.~Lee, F.~Wu, R.~Xin, and C.~Yu.
+\newblock Finding related tables.
+\newblock {\em SIGMOD}, 2012.
+
+\bibitem{dong:2009}
+X.~L. Dong, L.~Berti-Equille, and D.~Srivastava.
+\newblock Integrating conflicting data: The role of source dependence.
+\newblock {\em PVLDB}, 2, 2009.
+
+\bibitem{Dong_vldb:2009}
+X.~L. Dong, A.~Halevy, and C.~Yu.
+\newblock Data integration with uncertainty.
+\newblock {\em The VLDB Journal}, Apr. 2009.
+
+\bibitem{dong:vldb13}
+X.~L. Dong, B.~Saha, and D.~Srivastava.
+\newblock Less is more: selecting sources wisely for integration.
+\newblock {\em PVLDB}, 2013.
+
+\bibitem{elidan:2005}
+G.~Elidan and N.~Friedman.
+\newblock {Learning Hidden Variable Networks: The Information Bottleneck
+  Approach}.
+\newblock {\em J. Mach. Learn. Res.}, 2005.
+
+\bibitem{fan:2014}
+J.~Fan, M.~Lu, B.~C. Ooi, W.-C. Tan, and M.~Zhang.
+\newblock A hybrid machine-crowdsourcing system for matching web tables.
+\newblock In {\em ICDE}, 2014.
+
+\bibitem{getoor:2007}
+L.~Getoor and B.~Taskar.
+\newblock {\em {Probabilistic Relational Models}}.
+\newblock The MIT Press, 2007.
+
+\bibitem{godfrey:2007}
+P.~Godfrey, R.~Shipley, and J.~Gryz.
+\newblock Algorithms and analyses for maximal vector computation.
+\newblock {\em The VLDB Journal},16(1), 2007.
+
+\bibitem{oktie:13}
+O.~Hassanzadeh, K.~Q. Pu, S.~H. Yeganeh, R.~J. Miller, L.~Popa, M.~A.
+  Hern{\'a}ndez, and H.~Ho.
+\newblock Discovering linkage points over web data.
+\newblock {\em PVLDB}, 6, 2013.
+
+\bibitem{oktie:11}
+O.~Hassanzadeh, S.~H. Yeganeh, and R.~J. Miller.
+\newblock Linking semistructured data on the web.
+\newblock In {\em WebDB}, 2011.
+
+\bibitem{koller:2009}
+D.~Koller and N.~Friedman.
+\newblock {\em Probabilistic Graphical Models: Principles and Techniques -
+  Adaptive Computation and Machine Learning}.
+\newblock The MIT Press, 2009.
+
+\bibitem{kossmann:2002}
+D.~Kossmann, F.~Ramsak, and S.~Rost.
+\newblock Shooting stars in the sky: An online algorithm for skyline queries.
+\newblock {\em VLDB}, 2002.
+
+\bibitem{li:2012}
+X.~Li, X.~L. Dong, K.~Lyons, W.~Meng, and D.~Srivastava.
+\newblock Truth finding on the deep web: is the problem solved?
+\newblock {\em VLDB}, 2013.
+
+\bibitem{limaye:2010}
+G.~Limaye, S.~Sarawagi, and S.~Chakrabarti.
+\newblock Annotating and searching web tables using entities, types and
+  relationships.
+\newblock {\em PVLDB}, 3, 2010.
+
+\bibitem{pimplikar:2012}
+R.~Pimplikar and S.~Sarawagi.
+\newblock Answering table queries on the web using column keywords.
+\newblock {\em PVLDB}, 5, 2012.
+
+\bibitem{pipino:2002}
+L.~L. Pipino, Y.~W. Lee, and R.~Y. Wang.
+\newblock Data quality assessment.
+\newblock {\em Commun. ACM}, 45(4), 2002.
+
+\bibitem{pochampally:2014}
+R.~Pochampally, A.~Das~Sarma, X.~L. Dong, A.~Meliou, and D.~Srivastava.
+\newblock Fusing data with correlations.
+\newblock {\em SIGMOD}, 2014.
+
+\bibitem{rekatsinas:2014}
+T.~Rekatsinas, X.~L. Dong, and D.~Srivastava.
+\newblock Characterizing and selecting fresh data sources.
+\newblock {\em SIGMOD}, 2014.
+
+\bibitem{schutte:2014}
+S.~Schutte and K.~Donnay.
+\newblock Matched wake analysis: finding causal relationships in spatiotemporal
+  event data.
+\newblock {\em Political Geography}, 41, 2014.
+
+\bibitem{kg}
+A.~Singhal.
+\newblock Introducing the knowledge graph: Things, not strings.
+\newblock Official Blof (of Google), 2012.
+
+\bibitem{venetis:11}
+P.~Venetis, A.~Y. Halevy, J.~Madhavan, M.~Pasca, W.~Shen, F.~Wu, G.~Miao, and
+  C.~Wu.
+\newblock Recovering semantics of tables on the web.
+\newblock {\em PVLDB}, 4, 2011.
+
+\bibitem{wilson:2001}
+B.~Wilson, D.~Cappelleri, T.~W. Simpson, and M.~Frecker.
+\newblock {Efficient Pareto Frontier Exploration using Surrogate
+  Approximations}.
+\newblock {\em Optimization and Engineering}, 2, 2001.
+
+\bibitem{yakout:2012}
+M.~Yakout, K.~Ganjam, K.~Chakrabarti, and S.~Chaudhuri.
+\newblock Infogather: entity augmentation and attribute discovery by holistic
+  matching with web tables.
+\newblock {\em SIGMOD}, 2012.
+
+\end{thebibliography}
+}
 \end{document}

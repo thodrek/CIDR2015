@@ -1,16 +1,8 @@
 \begin{thebibliography}{10}
 
-\bibitem{datasift}
-Datasift.
-\newblock \url{http://datasift.com}.
-
 \bibitem{spotlight}
 Dbpedia spotlight.
 \newblock \url{https://github.com/dbpedia-spotlight/}.
-
-\bibitem{trendspottr}
-Trendsporttr.
-\newblock \url{http://trendspottr.com}.
 
 \bibitem{sdm:2013}
 R.~Balasubramanyan and W.~W. Cohen.
@@ -76,6 +68,11 @@ L.~Getoor and B.~Taskar.
 \newblock {\em {Probabilistic Relational Models}}.
 \newblock The MIT Press, 2007.
 
+\bibitem{godfrey:2007}
+P.~Godfrey, R.~Shipley, and J.~Gryz.
+\newblock Algorithms and analyses for maximal vector computation.
+\newblock {\em The VLDB Journal}, 16(1):5--28, 2007.
+
 \bibitem{oktie:13}
 O.~Hassanzadeh, K.~Q. Pu, S.~H. Yeganeh, R.~J. Miller, L.~Popa, M.~A.
   Hern{\'a}ndez, and H.~Ho.
@@ -87,10 +84,17 @@ O.~Hassanzadeh, S.~H. Yeganeh, and R.~J. Miller.
 \newblock Linking semistructured data on the web.
 \newblock In {\em WebDB}, 2011.
 
-\bibitem{leetaru:2013}
-K.~Leetaru and P.~Schrodt.
-\newblock Gdelt: Global data on events, language, and tone, 1979-2012.
-\newblock {\em Inter. Studies Association Annual Conf.}, 2013.
+\bibitem{koller:2009}
+D.~Koller and N.~Friedman.
+\newblock {\em Probabilistic Graphical Models: Principles and Techniques -
+  Adaptive Computation and Machine Learning}.
+\newblock The MIT Press, 2009.
+
+\bibitem{kossmann:2002}
+D.~Kossmann, F.~Ramsak, and S.~Rost.
+\newblock Shooting stars in the sky: An online algorithm for skyline queries.
+\newblock In {\em Proceedings of the 28th International Conference on Very
+  Large Data Bases}, VLDB '02, pages 275--286, 2002.
 
 \bibitem{li:2012}
 X.~Li, X.~L. Dong, K.~Lyons, W.~Meng, and D.~Srivastava.
@@ -104,6 +108,22 @@ G.~Limaye, S.~Sarawagi, and S.~Chakrabarti.
   relationships.
 \newblock {\em PVLDB}, 3(1):1338--1347, 2010.
 
+\bibitem{pimplikar:2012}
+R.~Pimplikar and S.~Sarawagi.
+\newblock Answering table queries on the web using column keywords.
+\newblock {\em Proc. VLDB Endow.}, 5(10):908--919, June 2012.
+
+\bibitem{pipino:2002}
+L.~L. Pipino, Y.~W. Lee, and R.~Y. Wang.
+\newblock Data quality assessment.
+\newblock {\em Commun. ACM}, 45(4):211--218, 2002.
+
+\bibitem{pochampally:2014}
+R.~Pochampally, A.~Das~Sarma, X.~L. Dong, A.~Meliou, and D.~Srivastava.
+\newblock Fusing data with correlations.
+\newblock In {\em Proceedings of the 2014 ACM SIGMOD International Conference
+  on Management of Data}, SIGMOD '14, pages 433--444, 2014.
+
 \bibitem{rekatsinas:2014}
 T.~Rekatsinas, X.~L. Dong, and D.~Srivastava.
 \newblock Characterizing and selecting fresh data sources.
@@ -115,6 +135,11 @@ S.~Schutte and K.~Donnay.
 \newblock Matched wake analysis: finding causal relationships in spatiotemporal
   event data.
 \newblock {\em Political Geography}, 41:1--10, 2014.
+
+\bibitem{kg}
+A.~Singhal.
+\newblock Introducing the knowledge graph: Things, not strings.
+\newblock Official Blof (of Google), 2012.
 
 \bibitem{venetis:11}
 P.~Venetis, A.~Y. Halevy, J.~Madhavan, M.~Pasca, W.~Shen, F.~Wu, G.~Miao, and
