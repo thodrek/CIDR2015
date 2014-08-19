@@ -9,6 +9,11 @@ R.~Balasubramanyan and W.~W. Cohen.
 \newblock Regularization of latent variable models to obtain sparsity.
 \newblock In {\em SDM}, pages 414--422, 2013.
 
+\bibitem{balazinska:vldb11}
+M.~Balazinska, B.~Howe, and D.~Suciu.
+\newblock Data markets in the cloud: An opportunity for the database community.
+\newblock {\em Proc. VLDB Endow.}, 4(12):1482--1485, 2011.
+
 \bibitem{berti-equille:sailing}
 L.~Berti-Equille, A.~D. Sarma, X.~Dong, A.~Marian, and D.~Srivastava.
 \newblock Sailing the information ocean with awareness of currents: Discovery
